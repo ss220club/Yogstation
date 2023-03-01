@@ -15,7 +15,7 @@ GLOBAL_VAR_INIT(primary_data_core, null)
 	idle_power_usage = 1000
 	use_power = IDLE_POWER_USE
 
-	var/disableheat = FALSE
+	var/disableheat = TRUE
 
 	critical_machine = TRUE
 
