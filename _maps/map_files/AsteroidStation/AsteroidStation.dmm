@@ -28813,8 +28813,10 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 8
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
+	dir = 8;
+	external_pressure_bound = 120;
+	name = "server vent"
 	},
 /turf/open/floor/circuit/green,
 /area/ai_monitored/turret_protected/ai)
@@ -31262,9 +31264,7 @@
 /obj/structure/cable/white{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/manifold/cyan/hidden{
-	dir = 8
-	},
+/obj/machinery/atmospherics/pipe/manifold4w/cyan/hidden,
 /turf/open/floor/circuit,
 /area/ai_monitored/turret_protected/ai)
 "jDU" = (
@@ -52600,6 +52600,11 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/ai/data_core/primary,
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	external_pressure_bound = 140;
+	name = "server vent";
+	pressure_checks = 0
+	},
 /turf/open/floor/circuit,
 /area/ai_monitored/turret_protected/ai)
 "qOC" = (
@@ -64639,6 +64644,9 @@
 "uNh" = (
 /obj/structure/cable/white{
 	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/cyan/hidden{
+	dir = 5
 	},
 /turf/open/floor/circuit/green,
 /area/ai_monitored/turret_protected/ai)

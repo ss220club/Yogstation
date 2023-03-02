@@ -14404,9 +14404,11 @@
 /area/maintenance/starboard/aft)
 "car" = (
 /obj/machinery/holopad,
-/obj/machinery/atmospherics/pipe/simple/cyan/hidden,
 /obj/structure/cable/white{
 	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/cyan/hidden{
+	dir = 4
 	},
 /turf/open/floor/plasteel/dark/telecomms,
 /area/ai_monitored/turret_protected/ai)
@@ -18951,7 +18953,6 @@
 	external_pressure_bound = 120;
 	name = "server vent"
 	},
-/obj/structure/cable/white,
 /obj/machinery/light/small{
 	dir = 8
 	},
@@ -26149,6 +26150,9 @@
 	},
 /obj/structure/cable/white{
 	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/cyan/hidden{
+	dir = 4
 	},
 /turf/open/floor/circuit/telecomms/server,
 /area/ai_monitored/turret_protected/ai)
@@ -34684,6 +34688,12 @@
 	pixel_y = 21;
 	req_access_txt = "16"
 	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	external_pressure_bound = 140;
+	name = "server vent";
+	pressure_checks = 0;
+	dir = 4
+	},
 /turf/open/floor/circuit/green/telecomms,
 /area/ai_monitored/turret_protected/ai)
 "jKZ" = (
@@ -39600,11 +39610,13 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 1
-	},
 /obj/machinery/light/small{
 	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
+	dir = 1;
+	external_pressure_bound = 120;
+	name = "server vent"
 	},
 /turf/open/floor/circuit/green/telecomms,
 /area/ai_monitored/turret_protected/ai)
@@ -67150,6 +67162,11 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/processing)
+"xfk" = (
+/obj/machinery/atmospherics/components/unary/portables_connector,
+/obj/machinery/portable_atmospherics/canister/nitrogen,
+/turf/open/floor/circuit/telecomms/server,
+/area/ai_monitored/turret_protected/ai)
 "xgh" = (
 /obj/structure/transit_tube/junction{
 	dir = 4
@@ -113574,8 +113591,8 @@ pEf
 jXD
 cva
 cva
-sAu
-rjo
+xfk
+pyn
 pkb
 cbd
 nHT

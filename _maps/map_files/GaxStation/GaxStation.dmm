@@ -14362,14 +14362,15 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/starboard)
 "gYo" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
-	dir = 4;
-	external_pressure_bound = 120
-	},
 /obj/machinery/camera{
 	c_tag = "Secondary AI Core";
 	dir = 4;
 	network = list("ss13","rd")
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
+	dir = 4;
+	external_pressure_bound = 120;
+	name = "server vent"
 	},
 /turf/open/floor/circuit/telecomms/server,
 /area/ai_monitored/secondarydatacore)
@@ -16907,9 +16908,7 @@
 /turf/open/floor/plating,
 /area/maintenance/department/medical/central)
 "ios" = (
-/obj/machinery/atmospherics/pipe/manifold/general/visible{
-	dir = 1
-	},
+/obj/machinery/atmospherics/pipe/manifold4w/general/visible,
 /turf/open/floor/circuit/telecomms/server,
 /area/ai_monitored/secondarydatacore)
 "ioF" = (
@@ -25038,6 +25037,11 @@
 /obj/machinery/ai/data_core,
 /obj/machinery/light{
 	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	external_pressure_bound = 140;
+	name = "server vent";
+	pressure_checks = 0
 	},
 /turf/open/floor/circuit/green/telecomms,
 /area/ai_monitored/secondarydatacore)
@@ -48387,10 +48391,10 @@
 /turf/open/floor/grass,
 /area/hallway/primary/starboard)
 "ydu" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
 	dir = 8;
-	external_pressure_bound = 140;
-	pressure_checks = 0
+	external_pressure_bound = 120;
+	name = "server vent"
 	},
 /turf/open/floor/circuit/telecomms/server,
 /area/ai_monitored/secondarydatacore)
