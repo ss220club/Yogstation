@@ -36671,11 +36671,6 @@
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
 "bXw" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
-	dir = 4;
-	external_pressure_bound = 120;
-	name = "server vent"
-	},
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -36683,6 +36678,9 @@
 	dir = 8
 	},
 /obj/machinery/light/small,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/server{
+	dir = 4
+	},
 /turf/open/floor/circuit/green/telecomms,
 /area/ai_monitored/turret_protected/ai)
 "bXz" = (
@@ -44665,11 +44663,7 @@
 /turf/open/floor/circuit/telecomms/server,
 /area/science/server)
 "cIf" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	external_pressure_bound = 140;
-	name = "server vent";
-	pressure_checks = 0
-	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/server,
 /turf/open/floor/circuit/telecomms/server,
 /area/science/server)
 "cIg" = (
@@ -44949,10 +44943,8 @@
 /turf/open/floor/plating,
 /area/science/server)
 "cJW" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
-	dir = 1;
-	external_pressure_bound = 120;
-	name = "server vent"
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on/server{
+	dir = 1
 	},
 /turf/open/floor/circuit/telecomms/server,
 /area/science/server)
@@ -47501,11 +47493,8 @@
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
 "daR" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 1;
-	external_pressure_bound = 140;
-	name = "server vent";
-	pressure_checks = 0
+/obj/machinery/atmospherics/components/unary/vent_pump/on/server{
+	dir = 1
 	},
 /turf/open/floor/circuit/telecomms,
 /area/science/xenobiology)
@@ -48327,10 +48316,8 @@
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
 "ddB" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
-	dir = 1;
-	external_pressure_bound = 120;
-	name = "server vent"
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on/server{
+	dir = 1
 	},
 /turf/open/floor/circuit/telecomms,
 /area/science/xenobiology)
@@ -49756,10 +49743,8 @@
 	dir = 4
 	},
 /obj/machinery/light/small,
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
-	dir = 8;
-	external_pressure_bound = 120;
-	name = "server vent"
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on/server{
+	dir = 8
 	},
 /turf/open/floor/circuit/green/telecomms,
 /area/ai_monitored/turret_protected/ai)
@@ -50977,7 +50962,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
+/obj/machinery/atmospherics/components/unary/vent_pump/on/server{
 	dir = 4
 	},
 /turf/open/floor/circuit/telecomms/server,
@@ -57658,12 +57643,6 @@
 	pixel_x = 27;
 	pixel_y = -26
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 1;
-	external_pressure_bound = 140;
-	name = "server vent";
-	pressure_checks = 0
-	},
 /turf/open/floor/circuit/green/telecomms,
 /area/ai_monitored/turret_protected/ai)
 "iSc" = (
@@ -60054,10 +60033,8 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/secondary)
 "knD" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
-	dir = 4;
-	external_pressure_bound = 120;
-	name = "server vent"
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on/server{
+	dir = 4
 	},
 /turf/open/floor/plasteel/dark/telecomms,
 /area/tcommsat/server)
@@ -62263,12 +62240,6 @@
 /obj/machinery/atmospherics/pipe/simple/yellow/hidden,
 /obj/structure/cable{
 	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 1;
-	external_pressure_bound = 140;
-	name = "server vent";
-	pressure_checks = 0
 	},
 /turf/open/floor/plasteel/dark/telecomms,
 /area/ai_monitored/turret_protected/ai)
@@ -67478,7 +67449,7 @@
 /turf/open/floor/plasteel,
 /area/maintenance/disposal/incinerator)
 "oXi" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
+/obj/machinery/atmospherics/components/unary/vent_pump/on/server{
 	dir = 8
 	},
 /turf/open/floor/circuit/telecomms/server,
@@ -69787,10 +69758,8 @@
 /turf/template_noop,
 /area/maintenance/port/aft)
 "qAL" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
-	dir = 4;
-	external_pressure_bound = 120;
-	name = "server vent"
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on/server{
+	dir = 4
 	},
 /turf/open/floor/circuit/telecomms/server,
 /area/ai_monitored/turret_protected/ai)
@@ -72429,10 +72398,8 @@
 /obj/machinery/status_display/ai{
 	pixel_x = 32
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
-	dir = 8;
-	external_pressure_bound = 120;
-	name = "server vent"
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on/server{
+	dir = 8
 	},
 /turf/open/floor/circuit/telecomms/server,
 /area/ai_monitored/turret_protected/ai)
@@ -74878,16 +74845,14 @@
 	dir = 4;
 	network = list("ss13","tcomms")
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
-	dir = 4;
-	external_pressure_bound = 120;
-	name = "server vent"
-	},
 /obj/machinery/airalarm/tcomms{
 	dir = 4;
 	pixel_x = -24
 	},
 /obj/effect/turf_decal/trimline/green/filled/line,
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on/server{
+	dir = 4
+	},
 /turf/open/floor/plasteel/dark/telecomms,
 /area/tcommsat/server)
 "tNq" = (
@@ -76726,13 +76691,13 @@
 	dir = 8;
 	network = list("ss13","tcomms")
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 8
-	},
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
 /obj/effect/turf_decal/trimline/blue/filled/line,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/server{
+	dir = 8
+	},
 /turf/open/floor/plasteel/dark/telecomms,
 /area/tcommsat/server)
 "uSq" = (
@@ -77010,7 +76975,7 @@
 /obj/machinery/door/firedoor/border_only{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/manifold4w/yellow/hidden,
+/obj/machinery/atmospherics/pipe/manifold/yellow/hidden,
 /turf/open/floor/circuit/telecomms/server,
 /area/ai_monitored/turret_protected/ai)
 "uXQ" = (
@@ -79751,7 +79716,7 @@
 /turf/open/floor/plasteel/dark,
 /area/bridge)
 "wSv" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
+/obj/machinery/atmospherics/components/unary/vent_pump/on/server{
 	dir = 8
 	},
 /turf/open/floor/plasteel/dark/telecomms,

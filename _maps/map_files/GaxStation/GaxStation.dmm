@@ -11325,10 +11325,7 @@
 /turf/closed/wall/r_wall,
 /area/maintenance/disposal/incinerator)
 "fxN" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
-	external_pressure_bound = 120;
-	name = "killroom vent"
-	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/server,
 /turf/open/floor/circuit/telecomms,
 /area/science/xenobiology)
 "fyb" = (
@@ -14367,10 +14364,8 @@
 	dir = 4;
 	network = list("ss13","rd")
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
-	dir = 4;
-	external_pressure_bound = 120;
-	name = "server vent"
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on/server{
+	dir = 4
 	},
 /turf/open/floor/circuit/telecomms/server,
 /area/ai_monitored/secondarydatacore)
@@ -16908,7 +16903,9 @@
 /turf/open/floor/plating,
 /area/maintenance/department/medical/central)
 "ios" = (
-/obj/machinery/atmospherics/pipe/manifold4w/general/visible,
+/obj/machinery/atmospherics/pipe/manifold/general/visible{
+	dir = 1
+	},
 /turf/open/floor/circuit/telecomms/server,
 /area/ai_monitored/secondarydatacore)
 "ioF" = (
@@ -25038,11 +25035,6 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	external_pressure_bound = 140;
-	name = "server vent";
-	pressure_checks = 0
-	},
 /turf/open/floor/circuit/green/telecomms,
 /area/ai_monitored/secondarydatacore)
 "mrk" = (
@@ -31774,14 +31766,11 @@
 /turf/open/indestructible/grass/sand,
 /area/hydroponics/garden)
 "pUk" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 8;
-	external_pressure_bound = 140;
-	name = "killroom vent";
-	pressure_checks = 0
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on/server{
+	dir = 8
 	},
 /turf/open/floor/circuit/telecomms,
 /area/science/xenobiology)
@@ -48391,10 +48380,8 @@
 /turf/open/floor/grass,
 /area/hallway/primary/starboard)
 "ydu" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
-	dir = 8;
-	external_pressure_bound = 120;
-	name = "server vent"
+/obj/machinery/atmospherics/components/unary/vent_pump/on/server{
+	dir = 8
 	},
 /turf/open/floor/circuit/telecomms/server,
 /area/ai_monitored/secondarydatacore)

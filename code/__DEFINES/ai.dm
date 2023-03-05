@@ -1,9 +1,11 @@
 
 ///All AI machinery heat production is multiplied by this value
-#define AI_TEMPERATURE_MULTIPLIER 1 //Thermodynamics? No... No I don't think that's a thing. Balance so we don't use an insane amount of power to produce noticeable heat
+#define AI_TEMPERATURE_MULTIPLIER 2 //Thermodynamics? No... No I don't think that's a thing. Balance so we don't use an insane amount of power to produce noticeable heat
 ///Temperature limit of all AI machinery
 #define AI_TEMP_LIMIT 288.15 //15C, much hotter than a normal server room for leniency :)
 
+#define AI_HEATSINK_CAPACITY 5000
+#define AI_HEATSINK_COEFF 0.7
 
 ///How many ticks can an AI data core store? When this amount of ticks have passed while it's in an INVALID state it can no longer be used by an AI
 #define MAX_AI_DATA_CORE_TICKS 45

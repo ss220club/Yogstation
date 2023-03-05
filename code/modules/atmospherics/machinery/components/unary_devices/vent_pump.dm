@@ -491,6 +491,14 @@
 	name = "air mix tank output inlet"
 	id_tag = ATMOS_GAS_MONITOR_OUTPUT_AIR
 
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on/server
+	name = "server vent"
+
+/obj/machinery/atmospherics/components/unary/vent_pump/on/server
+	name = "server vent"
+	external_pressure_bound = 4000
+	internal_pressure_bound = 0
+
 #undef INT_BOUND
 #undef EXT_BOUND
 #undef NO_BOUND

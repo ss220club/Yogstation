@@ -60,6 +60,7 @@ GLOBAL_VAR_INIT(primary_data_core, null)
 	active_power_usage = AI_DATA_CORE_POWER_USAGE * power_modifier
 
 /obj/machinery/ai/data_core/process_atmos()
+	. = ..()
 	calculate_validity()
 
 /obj/machinery/ai/data_core/Destroy()
@@ -126,6 +127,7 @@ GLOBAL_VAR_INIT(primary_data_core, null)
 		. += span_warning("Machinery non-functional. Reason: [holder_status]")
 	if(!isobserver(user))
 		return
+	. += "Core temperature: <b>[core_temp] K</b>"
 	. += "<b>Networked AI Laws:</b>"
 	for(var/mob/living/silicon/ai/AI in GLOB.ai_list)
 		var/active_status = "(Core: [FOLLOW_LINK(user, AI.loc)], Eye: [FOLLOW_LINK(user, AI.eyeobj)])"
@@ -192,13 +194,10 @@ GLOBAL_VAR_INIT(primary_data_core, null)
 				AI.playsound_local(AI, 'sound/machines/engine_alert2.ogg', 30)
 			
 
-	if(!(stat & (BROKEN|EMPED)) && has_power())
-		var/turf/T = get_turf(src)
-		var/datum/gas_mixture/env = T.return_air()
-		if(env.heat_capacity() && !disableheat)
-			var/temp_active_usage = stat & NOPOWER ? active_power_usage * CELL_POWERUSE_MULTIPLIER : active_power_usage
-			var/temperature_increase = (temp_active_usage / env.heat_capacity()) * heat_modifier //1 CPU = 1000W. Heat capacity = somewhere around 3000-4000. Aka we generate 0.25 - 0.33 K per second, per CPU. 
-			env.set_temperature(env.return_temperature() + temperature_increase * AI_TEMPERATURE_MULTIPLIER) //assume all input power is dissipated
+	if(!(stat & (BROKEN|EMPED)) && has_power() && !disableheat)
+		var/temp_active_usage = stat & NOPOWER ? active_power_usage * CELL_POWERUSE_MULTIPLIER : active_power_usage
+		var/temperature_increase = (temp_active_usage / AI_HEATSINK_CAPACITY) * heat_modifier //1 CPU = 1000W. Heat capacity = somewhere around 3000-4000. Aka we generate 0.25 - 0.33 K per second, per CPU. 
+		core_temp += temperature_increase * AI_TEMPERATURE_MULTIPLIER
 	
 /obj/machinery/ai/data_core/proc/can_transfer_ai()
 	if(stat & (BROKEN|EMPED) || !has_power())

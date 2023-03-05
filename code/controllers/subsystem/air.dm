@@ -10,7 +10,6 @@ SUBSYSTEM_DEF(air)
 	var/cost_turfs = 0
 	var/cost_groups = 0
 	var/cost_highpressure = 0
-	var/cost_deferred_airs
 	var/cost_hotspots = 0
 	var/cost_post_process = 0
 	var/cost_superconductivity = 0
@@ -30,8 +29,6 @@ SUBSYSTEM_DEF(air)
 	var/list/hotspots = list()
 	var/list/networks = list()
 	var/list/pipenets_needing_rebuilt = list()
-	var/list/deferred_airs = list()
-	var/max_deferred_airs = 0
 	var/list/obj/machinery/atmos_machinery = list()
 	var/list/pipe_init_dirs_cache = list()
 
@@ -89,7 +86,6 @@ SUBSYSTEM_DEF(air)
 	msg += "LT:[low_pressure_turfs]|"
 	msg += "ET:[num_equalize_processed]|"
 	msg += "GT:[num_group_turfs_processed]|"
-	msg += "DF:[max_deferred_airs]|"
 	msg += "GA:[get_amt_gas_mixes()]|"
 	msg += "MG:[get_max_gas_mixes()]"
 	return ..()
@@ -202,15 +198,6 @@ SUBSYSTEM_DEF(air)
 		if(state != SS_RUNNING)
 			return
 		resumed = 0
-		currentpart = SSAIR_DEFERRED_AIRS
-
-	if(currentpart == SSAIR_DEFERRED_AIRS)
-		timer = TICK_USAGE_REAL
-		process_deferred_airs(resumed)
-		cost_deferred_airs = MC_AVERAGE(cost_deferred_airs, TICK_DELTA_TO_MS(TICK_USAGE_REAL - timer))
-		if(state != SS_RUNNING)
-			return
-		resumed = 0
 		currentpart = SSAIR_HOTSPOTS
 
 	if(currentpart == SSAIR_HOTSPOTS)
@@ -281,31 +268,6 @@ SUBSYSTEM_DEF(air)
 /datum/controller/subsystem/air/proc/add_to_rebuild_queue(atmos_machine)
 	if(istype(atmos_machine, /obj/machinery/atmospherics))
 		pipenets_needing_rebuilt += atmos_machine
-
-/datum/controller/subsystem/air/proc/process_deferred_airs(resumed = 0)
-	max_deferred_airs = max(deferred_airs.len,max_deferred_airs)
-	while(deferred_airs.len)
-		var/list/cur_op = deferred_airs[deferred_airs.len]
-		deferred_airs.len--
-		var/datum/gas_mixture/air1
-		var/datum/gas_mixture/air2
-		if(isopenturf(cur_op[1]))
-			var/turf/open/T = cur_op[1]
-			air1 = T.return_air()
-		else
-			air1 = cur_op[1]
-		if(isopenturf(cur_op[2]))
-			var/turf/open/T = cur_op[2]
-			air2 = T.return_air()
-		else
-			air2 = cur_op[2]
-		if(istype(cur_op[3], /datum/callback))
-			var/datum/callback/cb = cur_op[3]
-			cb.Invoke(air1, air2)
-		else
-			air1.transfer_ratio_to(air2, cur_op[3])
-		if(MC_TICK_CHECK)
-			return
 
 /datum/controller/subsystem/air/proc/process_atmos_machinery(resumed = FALSE)
 	if (!resumed)
