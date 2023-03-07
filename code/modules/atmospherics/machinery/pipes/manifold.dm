@@ -31,7 +31,7 @@
 	icon_state = ""
 	center = mutable_appearance(icon, "manifold_center")
 
-/obj/machinery/atmospherics/pipe/manifold/SetInitDirections()
+/obj/machinery/atmospherics/pipe/manifold/set_init_directions()
 	initialize_directions = NORTH|SOUTH|EAST|WEST
 	initialize_directions &= ~dir
 
@@ -45,7 +45,7 @@
 	//Add non-broken pieces
 	for(var/i in 1 to device_type)
 		if(nodes[i])
-			add_overlay( getpipeimage(icon, "pipe-[piping_layer]", get_dir(src, nodes[i])) )
+			add_overlay( get_pipe_image(icon, "pipe-[piping_layer]", get_dir(src, nodes[i])) )
 
 	update_layer()
 	update_alpha()

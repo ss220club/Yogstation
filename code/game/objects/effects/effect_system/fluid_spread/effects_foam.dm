@@ -248,8 +248,6 @@
 	if (air.return_temperature() > T20C)
 		air.set_temperature(max(air.return_temperature() / 2, T20C))
 
-	location.air_update_turf()
-
 /obj/effect/particle_effect/fluid/foam/firefighting/make_result()
 	var/atom/movable/deposit = ..()
 	if(istype(deposit) && deposit.reagents && absorbed_plasma > 0)
@@ -390,7 +388,6 @@
 					continue
 				else
 					air.set_moles(gas_type, 0)
-		location.air_update_turf()
 
 	for(var/obj/machinery/atmospherics/components/unary/comp in location)
 		if(!comp.welded)

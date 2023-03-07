@@ -68,9 +68,6 @@
 	update_icon()
 	return TRUE
 
-/obj/machinery/portable_atmospherics/portableConnectorReturnAir()
-	return air_contents
-
 /obj/machinery/portable_atmospherics/Move()
 	. = ..()
 	if(.)

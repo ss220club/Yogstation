@@ -13,7 +13,7 @@
 /obj/machinery/ai/Initialize(mapload)
 	. = ..()
 
-	SSair.atmos_machinery += src 
+	SSair.start_processing_machine(src)
 
 /obj/machinery/ai/process_atmos()
 	var/turf/T = get_turf(src)
@@ -28,7 +28,7 @@
 /obj/machinery/ai/Destroy()
 	. = ..()
 	
-	SSair.atmos_machinery -= src 
+	SSair.stop_processing_machine(src)
 
 /obj/machinery/ai/proc/valid_holder()
 	if(stat & (BROKEN|EMPED) || !has_power())
