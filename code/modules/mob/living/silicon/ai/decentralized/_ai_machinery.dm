@@ -12,12 +12,15 @@
 
 /obj/machinery/ai/Initialize(mapload)
 	. = ..()
-
+	START_PROCESSING(SSmachines, src)
 	SSair.start_processing_machine(src)
 
+//Cooling happens here
 /obj/machinery/ai/process_atmos()
 	var/turf/T = get_turf(src)
 	if(!T)
+		return
+	if(isspaceturf(T))
 		return
 	var/datum/gas_mixture/env = T.return_air()
 	if(!env)

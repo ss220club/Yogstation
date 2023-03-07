@@ -64,8 +64,7 @@ GLOBAL_LIST_EMPTY(server_cabinets)
 
 	idle_power_usage = initial(idle_power_usage) * power_modifier
 
-/obj/machinery/ai/server_cabinet/process_atmos()
-	. = ..()
+/obj/machinery/ai/server_cabinet/process()
 	valid_ticks = clamp(valid_ticks, 0, MAX_AI_EXPANSION_TICKS)
 	if(valid_holder())
 		var/total_usage = (cached_power_usage * power_modifier)
@@ -91,7 +90,6 @@ GLOBAL_LIST_EMPTY(server_cabinets)
 			cut_overlays()
 			hardware_synced = FALSE
 			GLOB.ai_os.update_hardware()
-
 
 /obj/machinery/ai/server_cabinet/update_icon()
 	cut_overlays()
