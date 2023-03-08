@@ -32,6 +32,7 @@
 	. = ..()
 	
 	SSair.stop_processing_machine(src)
+	STOP_PROCESSING(SSmachines, src)
 
 /obj/machinery/ai/proc/valid_holder()
 	if(stat & (BROKEN|EMPED) || !has_power())
