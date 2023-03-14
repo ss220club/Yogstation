@@ -60,7 +60,7 @@
 	if(panel_open)
 		add_overlay("electrolyzer-open")
 
-/obj/machinery/electrolyzer/process_atmos(delta_time)
+/obj/machinery/electrolyzer/process_atmos()
 	if((stat & (BROKEN|MAINT)) && on)
 		on = FALSE
 	if(!on)
@@ -94,7 +94,7 @@
 	if(!removed)
 		return
 
-	var/proportion = min(removed.get_moles(GAS_H2O), (1.5 * delta_time * workingPower))//Works to max 12 moles at a time.
+	var/proportion = min(removed.get_moles(GAS_H2O), (3 * workingPower))//Works to max 12 moles at a time.
 	removed.adjust_moles(GAS_H2O, -(proportion * 2 * workingPower))
 	removed.adjust_moles(GAS_O2, (proportion * workingPower))
 	removed.adjust_moles(GAS_H2, (proportion * 2 * workingPower))
