@@ -55,10 +55,14 @@ GLOBAL_LIST_EMPTY(pipeimages)
 	nodes = new(device_type)
 	if (!armor)
 		armor = list(MELEE = 25, BULLET = 10, LASER = 10, ENERGY = 100, BOMB = 0, BIO = 100, RAD = 100, FIRE = 100, ACID = 70)
-	if(process)
-		SSair.start_processing_machine(src)
-	. = ..()
+	init_processing = process
+	..()
 	set_init_directions()
+
+/obj/machinery/atmospherics/Initialize(mapload)
+	if(init_processing)
+		SSair.start_processing_machine(src)
+	return ..()
 
 /obj/machinery/atmospherics/Destroy()
 	for(var/i in 1 to device_type)
