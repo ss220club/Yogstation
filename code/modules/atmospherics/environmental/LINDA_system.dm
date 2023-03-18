@@ -131,9 +131,9 @@
 	return adjacent_turfs
 
 /atom/proc/air_update_turf()
-	if(!get_turf(src))
-		return
 	var/turf/T = get_turf(src)
+	if(!T)
+		return
 	T.air_update_turf()
 
 /turf/air_update_turf()
