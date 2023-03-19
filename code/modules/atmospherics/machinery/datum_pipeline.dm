@@ -251,7 +251,7 @@
 		gas_mixture_list += pipeline.other_airs
 		gas_mixture_list += pipeline.air
 		for(var/obj/machinery/atmospherics/components/atmos_machine as anything in pipeline.other_atmos_machines)
-			if(!atmos_machine.custom_reconcilation)
+			if(!atmos_machine?.custom_reconcilation)
 				continue
 			pipeline_list |= atmos_machine.return_pipenets_for_reconcilation(src)
 			gas_mixture_list |= atmos_machine.return_airs_for_reconcilation(src)
