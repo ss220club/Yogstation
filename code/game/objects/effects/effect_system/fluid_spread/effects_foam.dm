@@ -384,7 +384,7 @@
 
 		for(var/gas_type in air.get_gases())
 			switch(gas_type)
-				if(/datum/gas/oxygen, /datum/gas/nitrogen)
+				if(GAS_O2, GAS_N2)
 					continue
 				else
 					air.set_moles(gas_type, 0)
