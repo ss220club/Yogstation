@@ -284,8 +284,6 @@
 			miasma_disease.name = "Unknown"
 			ForceContractDisease(miasma_disease, TRUE, TRUE)
 
-
-
 		//Miasma side effects
 		switch(miasma_partialpressure)
 			if(0.25 to 5)

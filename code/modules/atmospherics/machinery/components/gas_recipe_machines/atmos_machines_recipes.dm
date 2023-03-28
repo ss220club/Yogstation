@@ -181,3 +181,12 @@ GLOBAL_LIST_INIT(gas_recipe_meta, gas_recipes_list())
 	energy_release = 2800000
 	requirements = list(GAS_BZ = 100, GAS_HYPERNOB = 100, GAS_O2 = 1000)
 	products = list(/obj/item/stack/hypernoblium_crystal = 1)
+
+/datum/gas_recipe/crystallizer/crystallized_nitrium
+	id = "crystallized_nitrium"
+	name = "Nitrium crystal"
+	min_temp = 10
+	max_temp = 25
+	energy_release = 45000
+	requirements = list(/datum/gas/nitrium = 150, /datum/gas/oxygen = 70, /datum/gas/bz = 50)
+	products = list(/obj/item/nitrium_crystal = 1)

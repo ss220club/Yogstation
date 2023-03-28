@@ -79,7 +79,12 @@
 /datum/gas_reaction/nobliumsuppression/react()
 	return STOP_REACTIONS
 
-//water vapor: puts out fires?
+/**
+ * Steam Condensation/Deposition:
+ *
+ * Makes turfs slippery.
+ * Can frost things if the gas is cold enough.
+ */
 /datum/gas_reaction/water_vapor
 	priority = WATERVAPOR
 	name = "Water Vapor"
@@ -91,7 +96,6 @@
 	)
 
 /datum/gas_reaction/water_vapor/react(datum/gas_mixture/air, datum/holder)
-	var/turf/open/location = isturf(holder) ? holder : null
 	. = NO_REACTION
 	if (air.return_temperature() <= WATER_VAPOR_FREEZE)
 		if(location && location.freon_gas_act())
@@ -371,7 +375,7 @@
 	name = "Nitryl formation"
 	id = "nitrylformation"
 
-/datum/gas_reaction/nitrylformation/init_reqs()
+/datum/gas_reaction/nitrium_formation/init_reqs()
 	min_requirements = list(
 		GAS_O2 = 20,
 		GAS_N2 = 20,
@@ -379,7 +383,7 @@
 		"TEMP" = FIRE_MINIMUM_TEMPERATURE_TO_EXIST*30
 	)
 
-/datum/gas_reaction/nitrylformation/react(datum/gas_mixture/air)
+/datum/gas_reaction/nitrium_formation/react(datum/gas_mixture/air)
 	var/temperature = air.return_temperature()
 
 	var/initial_o2 = air.get_moles(GAS_O2)
@@ -399,6 +403,8 @@
 		if(new_heat_capacity > MINIMUM_HEAT_CAPACITY)
 			air.set_temperature(max(((old_thermal_energy - energy_used)/new_heat_capacity),TCMB))
 		return REACTING
+
+	return REACTING
 
 /datum/gas_reaction/bzformation //Formation of BZ by combining plasma and tritium at low pressures. Exothermic.
 	priority = BZFORMATION
@@ -532,7 +538,7 @@
 	name ="Stimulum Energy Ball"
 	id = "stimball"
 
-/datum/gas_reaction/stim_ball/init_reqs()
+/datum/gas_reaction/nitro_ball/init_reqs()
 	min_requirements = list(
 		GAS_PLUOXIUM = STIM_BALL_MOLES_REQUIRED,
 		GAS_STIMULUM = STIM_BALL_MOLES_REQUIRED,
@@ -978,6 +984,11 @@
 		return REACTING
 	return NO_REACTION
 
+/**
+ * Pluonium BZase Action
+ *
+ * Breaks BZ down into nitrogen and plasma in the presence of pluonium.
+ */
 /datum/gas_reaction/pluonium_bz_response
 	priority = PLUONIUMBZRESPONSE
 	name = "Pluonium bz response"

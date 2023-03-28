@@ -262,8 +262,12 @@
 			H.adjustFireLoss(nitryl_pp/4)
 		gas_breathed = breath.get_moles(GAS_NITRYL)
 		if (gas_breathed > gas_stimulation_min)
-			var/existing = H.reagents.get_reagent_amount(/datum/reagent/nitryl)
-			H.reagents.add_reagent(/datum/reagent/nitryl,max(0, 1*eff - existing))
+			var/existing = H.reagents.get_reagent_amount(/datum/reagent/nitrium_low_metabolization)
+			H.reagents.add_reagent(/datum/reagent/nitrium_low_metabolization, max(0, 2 - existing))
+		if (gas_breathed > gas_stimulation_min * 2.5)
+			var/existing = H.reagents.get_reagent_amount(/datum/reagent/nitrium_high_metabolization)
+			H.reagents.add_reagent(/datum/reagent/nitrium_high_metabolization, max(0, 1 - existing))
+		breath.adjust_moles(/datum/gas/nitrium, -gas_breathed)
 
 		breath.adjust_moles(GAS_NITRYL, -gas_breathed)
 
@@ -430,6 +434,10 @@
 		if(breath_temperature > heat_level_1_threshold)
 			if(prob(20))
 				to_chat(H, span_warning("You feel [hot_message] in your [name]!"))
+
+/obj/item/organ/lungs/proc/handle_helium_speech(owner, list/speech_args)
+	SIGNAL_HANDLER
+	speech_args[SPEECH_SPANS] |= SPAN_HELIUM
 
 /obj/item/organ/lungs/on_life()
 	..()

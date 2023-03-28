@@ -11,7 +11,7 @@
 
 /datum/bounty/item/atmos/simple/pluoxium
 	name = "Full Tank of Pluoxium"
-	description = "CentCom RnD is researching extra compact internals. Ship us a tank full of Pluoxium and you'll be compensated."
+	description = "CentCom RnD is researching extra compact internals. Ship us a tank full of Pluoxium and you'll be compensated. (20 Moles)"
 	reward = 2500
 	gas_type = GAS_PLUOXIUM
 
@@ -23,7 +23,7 @@
 
 /datum/bounty/item/atmos/simple/tritium_tank
 	name = "Full Tank of Tritium"
-	description = "Station 49 is looking to kickstart their research program. Ship them a tank full of Tritium."
+	description = "Station 49 is looking to kickstart their research program. Ship them a tank full of Tritium. (20 Moles)"
 	reward = 3500
 	gas_type = GAS_TRITIUM
 
@@ -80,7 +80,7 @@
 
 /datum/bounty/item/supermatter_silver
 	name = "Supermatter Silvers"
-	description = "Nanotrasen engineering team wants to build a new supermatter engine, shift them some supermatter silvers."
+	description = "Nanotrasen engineering team wants to build a new supermatter engine. Ship them 2 supermatter silvers."
 	reward = 50000
 	required_count = 2
 	wanted_types = list(/obj/item/nuke_core/supermatter_sliver)
