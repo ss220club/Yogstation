@@ -188,5 +188,5 @@ GLOBAL_LIST_INIT(gas_recipe_meta, gas_recipes_list())
 	min_temp = 10
 	max_temp = 25
 	energy_release = 45000
-	requirements = list(/datum/gas/nitrium = 150, /datum/gas/oxygen = 70, /datum/gas/bz = 50)
+	requirements = list(GAS_NITRIUM = 150, GAS_O2 = 70, GAS_BZ = 50)
 	products = list(/obj/item/nitrium_crystal = 1)

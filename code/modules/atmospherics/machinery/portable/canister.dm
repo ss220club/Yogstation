@@ -221,7 +221,7 @@
 	name = "Antinoblium canister"
 	desc = "Antinoblium, we still don't know what it does, but it sells for a lot"
 	icon_state = "halon"
-	gas_type = /datum/gas/antinoblium
+	gas_type = GAS_ANTINOB
 	filled = 1
 
 /obj/machinery/portable_atmospherics/canister/proc/get_time_left()
