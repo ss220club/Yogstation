@@ -15,11 +15,11 @@
 	reward = 2500
 	gas_type = GAS_PLUOXIUM
 
-/datum/bounty/item/atmos/simple/nitryl_tank
-	name = "Full Tank of Nitryl"
-	description = "The non-human staff of Station 88 has been volunteered to test performance enhancing drugs. Ship them a tank full of Nitryl so they can get started."
-	reward = 6000
-	gas_type = GAS_NITRYL
+/datum/bounty/item/atmos/simple/nitrium_tank
+	name = "Full Tank of Nitrium"
+	description = "The non-human staff of Station 88 has been volunteered to test performance enhancing drugs. Ship them a tank full of Nitrium so they can get started. (20 Moles)"
+	reward = 12000
+	gas_type = GAS_NITRIUM
 
 /datum/bounty/item/atmos/simple/tritium_tank
 	name = "Full Tank of Tritium"
@@ -51,29 +51,23 @@
 	reward = 15000
 	gas_type = GAS_HYPERNOB
 
-/datum/bounty/item/atmos/complex/stimulum_tank
-	name = "Full Tank of Stimulum"
-	description = "Station 14's staff are behind schedule on important research. Ship them some Stimulum to get them back up to speed. (20 Moles)"
-	reward = 12000
-	gas_type = GAS_STIMULUM
-
 /datum/bounty/item/h2metal/metallic_hydrogen_armor
-	name = "Metallic Hydrogen Armors"
-	description = "Nanotrasen is requiring new armor to be made. Ship them some metallic hydrogen armors."
+	name = "Metallic Hydrogen Armor"
+	description = "Nanotrasen is requiring new armor to be made. Ship them 1 metallic hydrogen armor."
 	reward = 8000
 	required_count = 1
 	wanted_types = list(/obj/item/clothing/suit/armor/elder_atmosian)
 
 /datum/bounty/item/h2metal/metallic_hydrogen_helmet
-	name = "Metallic Hydrogen Armors"
-	description = "Nanotrasen is requiring new helmet to be made. Ship them some metallic hydrogen helmets."
+	name = "Metallic Hydrogen Helmet"
+	description = "Nanotrasen is requiring new helmet to be made. Ship them 1 metallic hydrogen helmet."
 	reward = 7000
 	required_count = 1
 	wanted_types = list(/obj/item/clothing/head/helmet/elder_atmosian)
 
 /datum/bounty/item/h2metal/metallic_hydrogen_axe
 	name = "Metallic Hydrogen Axes"
-	description = "Nanotrasen is requiring new axes to be made. Ship them some metallic hydrogen helmets."
+	description = "Nanotrasen is requiring new axes to be made. Ship them 3 metallic hydrogen axes."
 	reward = 7500
 	required_count = 3
 	wanted_types = list(/obj/item/twohanded/fireaxe/metal_h2_axe)

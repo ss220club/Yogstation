@@ -136,17 +136,11 @@
 	icon_state = "hypno"
 	gas_type = GAS_HYPERNOB
 
-/obj/machinery/portable_atmospherics/canister/nitryl
-	name = "Nitryl canister"
-	desc = "Nitryl gas. Feels great 'til the acid eats your lungs."
-	icon_state = "nitryl"
-	gas_type = GAS_NITRYL
-
-/obj/machinery/portable_atmospherics/canister/stimulum
-	name = "Stimulum canister"
-	desc = "Stimulum. High energy gas, high energy people."
-	icon_state = "stimulum"
-	gas_type = GAS_STIMULUM
+/obj/machinery/portable_atmospherics/canister/nitrium
+	name = "Nitrium canister"
+	desc = "Nitrium gas. Feels great 'til the acid eats your lungs."
+	icon_state = "nitrium"
+	gas_type = GAS_NITRIUM
 
 /obj/machinery/portable_atmospherics/canister/pluoxium
 	name = "Pluoxium canister"
@@ -708,7 +702,7 @@
 	desc = "This should never be spawned in game except for testing purposes."
 	icon_state = "danger"
 /obj/machinery/portable_atmospherics/canister/stimball_test/create_gas()
-	air_contents.set_moles(GAS_STIMULUM, 1000)
+	air_contents.set_moles(GAS_NITRIUM, 1000)
 	air_contents.set_moles(GAS_PLASMA, 1000)
 	air_contents.set_moles(GAS_PLUOXIUM, 1000)
 	air_contents.set_temperature(FIRE_MINIMUM_TEMPERATURE_TO_EXIST-1)

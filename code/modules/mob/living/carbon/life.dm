@@ -265,11 +265,6 @@
 		var/tritium_partialpressure = (breath.get_moles(GAS_TRITIUM)/breath.total_moles())*breath_pressure
 		radiation += tritium_partialpressure/10
 
-	//NITRYL
-	if(breath.get_moles(GAS_NITRYL))
-		var/nitryl_partialpressure = (breath.get_moles(GAS_NITRYL)/breath.total_moles())*breath_pressure
-		adjustFireLoss(nitryl_partialpressure/4)
-
 	//FREON
 	if(breath.get_moles(GAS_FREON))
 		var/freon_partialpressure = (breath.get_moles(GAS_FREON)/breath.total_moles())*breath_pressure

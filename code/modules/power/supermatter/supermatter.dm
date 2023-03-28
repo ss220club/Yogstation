@@ -499,7 +499,8 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 		var/zaukcomp = max(removed.get_moles(GAS_ZAUKER)/combined_gas, 0)
 		var/haloncomp = max(removed.get_moles(GAS_HALON)/combined_gas, 0)
 		var/nobliumcomp = max(removed.get_moles(GAS_HYPERNOB)/combined_gas, 0)
-		var/stimcomp = max(removed.get_moles(GAS_STIMULUM)/combined_gas, 0)
+		var/antinobliumcomp = max(removed.get_moles(GAS_ANTINOB)/combined_gas, 0)
+		var/nitriumcomp = max(removed.get_moles(GAS_NITRIUM)/combined_gas, 0)
 
 		if (healcomp >= 0.1)
 			heal_mod = (healcomp * HEALIUM_HEAL_MOD) + 1 //Increases healing and healing cap
@@ -513,7 +514,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 
 		// Mole releated calculations
 		var/bzmol = max(removed.get_moles(GAS_BZ), 0)
-		var/stimmol = max(removed.get_moles(GAS_STIMULUM), 0)
+		var/nitriummol = max(removed.get_moles(GAS_NITRIUM), 0)
 
 		// Power of the gas. Scale of 0 to 1
 		gasmix_power_ratio = clamp(plasmacomp + o2comp + co2comp + tritiumcomp + bzcomp + nitriumcomp - pluoxiumcomp - n2comp, 0, 1)
@@ -562,7 +563,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 			var/starting_angle = rand(0, 360)
 			for(var/i = 0 to balls_shot) //  fires particles in a ring, with some random variation in the angle
 				src.fire_nuclear_particle(starting_angle + rand(-180/balls_shot, 180/balls_shot) + (i * 360 / balls_shot))
-			removed.set_moles(GAS_STIMULUM, max(stimmol - (balls_shot * STIM_BALL_MOLES_REQUIRED), 0)) //converts stimulum into radballs
+			removed.set_moles(GAS_NITRIUM, max(nitriummol - (balls_shot * NITRO_BALL_MOLES_REQUIRED), 0)) //converts stimulum into radballs
 
 		if(bzcomp >= 0.4 && prob(50 * bzcomp))
 			src.fire_nuclear_particle()			// Start to emit radballs at a maximum of 50% chance per tick

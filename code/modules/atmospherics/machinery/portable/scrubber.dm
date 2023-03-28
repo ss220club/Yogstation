@@ -3,14 +3,27 @@
 	icon_state = "pscrubber:0"
 	density = TRUE
 
-
-
 	var/on = FALSE
 	var/volume_rate = 1000
 	var/overpressure_m = 80
 	volume = 1000
 
-	var/list/scrubbing = list(GAS_PLASMA, GAS_CO2, GAS_NITROUS, GAS_BZ, GAS_NITRYL, GAS_TRITIUM, GAS_HYPERNOB, GAS_H2O)
+	var/list/scrubbing = list(
+		GAS_PLASMA,
+		GAS_CO2,
+		GAS_NITROUS,
+		GAS_BZ,
+		GAS_NITRIUM,
+		GAS_TRITIUM,
+		GAS_HYPERNOB,
+		GAS_FREON,
+		GAS_H2O,
+		GAS_HEALIUM,
+		GAS_PLUONIUM,
+		GAS_HALON,
+		GAS_ZAUKER,
+		GAS_HEXANE,
+	)
 
 /obj/machinery/portable_atmospherics/scrubber/Destroy()
 	var/turf/T = get_turf(src)

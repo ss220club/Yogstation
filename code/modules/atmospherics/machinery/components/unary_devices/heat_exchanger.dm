@@ -33,6 +33,7 @@
 	PIPING_LAYER_SHIFT(src, piping_layer)
 
 /obj/machinery/atmospherics/components/unary/heat_exchanger/atmos_init()
+	var/obj/machinery/atmospherics/components/unary/heat_exchanger/partner = partner_ref?.resolve()
 	if(!partner)
 		partner_ref = null
 		var/partner_connect = turn(dir, 180)
@@ -46,7 +47,9 @@
 	. = ..()
 
 /obj/machinery/atmospherics/components/unary/heat_exchanger/process_atmos()
-	if(!partner || SSair.times_fired <= update_cycle)
+	var/obj/machinery/atmospherics/components/unary/heat_exchanger/partner = partner_ref?.resolve()
+	if(!partner)
+		partner_ref = null
 		return
 	if(SSair.times_fired <= update_cycle)
 		return

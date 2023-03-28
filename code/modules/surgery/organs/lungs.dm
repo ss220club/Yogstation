@@ -45,7 +45,9 @@
 	var/SA_para_min = 1 //nitrous values
 	var/SA_sleep_min = 5
 	var/BZ_trip_balls_min = 1 //BZ gas
-	var/gas_stimulation_min = 0.002 //Nitryl and Stimulum
+	var/gas_stimulation_min = 0.002 // Nitrium, Freon and Hyper-noblium
+	/// Whether helium speech effects are currently active
+	var/helium_speech = FALSE
 
 	var/cold_message = "your face freezing and an icicle forming"
 	var/cold_level_1_threshold = 260
@@ -248,28 +250,21 @@
 			H.hallucination += 5
 			H.reagents.add_reagent(/datum/reagent/bz_metabolites,1)
 
-	// Nitryl
-		var/nitryl_pp = PP(breath,GAS_NITRYL)
-		if (prob(nitryl_pp))
-			to_chat(H, span_alert("Your mouth feels like it's burning!"))
-		if (nitryl_pp >40)
-			H.emote("gasp")
-			H.adjustFireLoss(10)
-			if (prob(nitryl_pp/2))
-				to_chat(H, span_alert("Your throat closes up!"))
-				H.silent = max(H.silent, 3)
-		else
-			H.adjustFireLoss(nitryl_pp/4)
-		gas_breathed = breath.get_moles(GAS_NITRYL)
+	// Nitrium
+		var/nitrium_pp = PP(breath, GAS_NITRIUM)
+		// Random chance to inflict side effects, increases with pressure.
+		if (nitrium_pp > 15 && prob(nitrium_pp))
+			H.adjustOrganLoss(ORGAN_SLOT_LUNGS, nitrium_pp * 0.1)
+			to_chat(H, span_alert("You feel a burning sensation in your chest"))
+		gas_breathed = breath.get_moles(GAS_NITRIUM)
+		// Metabolize to reagents.
 		if (gas_breathed > gas_stimulation_min)
 			var/existing = H.reagents.get_reagent_amount(/datum/reagent/nitrium_low_metabolization)
 			H.reagents.add_reagent(/datum/reagent/nitrium_low_metabolization, max(0, 2 - existing))
 		if (gas_breathed > gas_stimulation_min * 2.5)
 			var/existing = H.reagents.get_reagent_amount(/datum/reagent/nitrium_high_metabolization)
 			H.reagents.add_reagent(/datum/reagent/nitrium_high_metabolization, max(0, 1 - existing))
-		breath.adjust_moles(/datum/gas/nitrium, -gas_breathed)
-
-		breath.adjust_moles(GAS_NITRYL, -gas_breathed)
+		breath.adjust_moles(GAS_NITRIUM, -gas_breathed)
 
 	// Freon
 		var/freon_pp = PP(breath,GAS_FREON)
@@ -300,6 +295,12 @@
 			H.adjustToxLoss(-5)
 			H.adjustBruteLoss(-5)
 		gas_breathed = breath.get_moles(GAS_HEALIUM)
+		if(gas_breathed > gas_stimulation_min && !helium_speech)
+			helium_speech = TRUE
+			RegisterSignal(owner, COMSIG_MOB_SAY, PROC_REF(handle_helium_speech))
+		else if (gas_breathed <= gas_stimulation_min && helium_speech)
+			helium_speech = FALSE
+			UnregisterSignal(owner, COMSIG_MOB_SAY)
 		breath.adjust_moles(GAS_HEALIUM, -gas_breathed)
 
 	// Pluonium
@@ -332,13 +333,6 @@
 			if(prob(33))
 				H.adjustOrganLoss(ORGAN_SLOT_BRAIN, 3, 150)
 		breath.adjust_moles(GAS_HEXANE, -gas_breathed)
-
-	// Stimulum
-		gas_breathed = PP(breath,GAS_STIMULUM)
-		if (gas_breathed > gas_stimulation_min)
-			var/existing = H.reagents.get_reagent_amount(/datum/reagent/stimulum)
-			H.reagents.add_reagent(/datum/reagent/stimulum,max(0, 1 - existing))
-		breath.adjust_moles(GAS_STIMULUM, -gas_breathed)
 
 	// Miasma
 		if (breath.get_moles(GAS_MIASMA))
