@@ -353,7 +353,7 @@
 			connected_core.waste_remove = !connected_core.waste_remove
 			. = TRUE
 		if("filter")
-			var/gas = params["val"]
+			var/gas = params["mode"]
 			if(gas in GLOB.gas_data.names)
 				connected_core.moderator_scrubbing ^= gas
 			. = TRUE

@@ -160,7 +160,7 @@ const GASES = [
     color: 'lightsteelblue',
   },
   {
-    id: 'nob',
+    id: 'hypernob',
     path: '/datum/gas/hypernoblium',
     name: 'Hyper-noblium',
     label: 'Hyper-nob',
@@ -251,7 +251,7 @@ const GASES = [
     color: 'purple',
   },
   {
-    id: 'antinoblium',
+    id: 'antinob',
     path: '/datum/gas/antinoblium',
     name: 'Antinoblium',
     label: 'Anti-nob',
