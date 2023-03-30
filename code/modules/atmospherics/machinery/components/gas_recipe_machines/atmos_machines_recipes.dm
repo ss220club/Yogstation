@@ -106,7 +106,7 @@ GLOBAL_LIST_INIT(gas_recipe_meta, gas_recipes_list())
 	max_temp = 12000
 	energy_release = -350000
 	dangerous = TRUE
-	requirements = list(GAS_STIMULUM = 500, GAS_FREON = 500, GAS_NITRYL = 800)
+	requirements = list(GAS_BZ = 50, GAS_FREON = 500, GAS_NITRIUM = 800)
 	products = list(/obj/machinery/the_singularitygen/tesla = 1)
 
 /datum/gas_recipe/crystallizer/supermatter_silver
@@ -181,3 +181,12 @@ GLOBAL_LIST_INIT(gas_recipe_meta, gas_recipes_list())
 	energy_release = 2800000
 	requirements = list(GAS_BZ = 100, GAS_HYPERNOB = 100, GAS_O2 = 1000)
 	products = list(/obj/item/stack/hypernoblium_crystal = 1)
+
+/datum/gas_recipe/crystallizer/crystallized_nitrium
+	id = "crystallized_nitrium"
+	name = "Nitrium crystal"
+	min_temp = 10
+	max_temp = 25
+	energy_release = 45000
+	requirements = list(GAS_NITRIUM = 150, GAS_O2 = 70, GAS_BZ = 50)
+	products = list(/obj/item/nitrium_crystal = 1)

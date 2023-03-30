@@ -68,14 +68,14 @@
 	fusion_power = 10
 	flags = GAS_FLAG_DANGEROUS
 
-/datum/gas/nitryl
-	id = GAS_NITRYL
-	specific_heat = 20
-	name = "Nitryl"
-	gas_overlay = "nitryl"
+/datum/gas/nitrium
+	id = GAS_NITRIUM
+	specific_heat = 10
+	name = "Nitrium"
+	gas_overlay = "nitrium"
 	moles_visible = MOLES_GAS_VISIBLE
 	flags = GAS_FLAG_DANGEROUS
-	fusion_power = 16
+	fusion_power = 7
 
 /datum/gas/tritium
 	id = GAS_TRITIUM
@@ -92,12 +92,6 @@
 	name = "BZ"
 	flags = GAS_FLAG_DANGEROUS
 	fusion_power = 8
-
-/datum/gas/stimulum
-	id = GAS_STIMULUM
-	specific_heat = 5
-	name = "Stimulum"
-	fusion_power = 7
 
 /datum/gas/pluoxium
 	id = GAS_PLUOXIUM
@@ -148,6 +142,14 @@
 	flags = GAS_FLAG_DANGEROUS
 	gas_overlay = "halon"
 	moles_visible = MOLES_GAS_VISIBLE
+
+/datum/gas/antinoblium
+	id = GAS_ANTINOB
+	specific_heat = 1
+	name = "Antinoblium"
+	gas_overlay = "antinoblium"
+	moles_visible = MOLES_GAS_VISIBLE
+	fusion_power = 20
 
 /datum/gas/zauker
 	id = GAS_ZAUKER
