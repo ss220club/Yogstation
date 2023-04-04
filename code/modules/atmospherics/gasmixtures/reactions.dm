@@ -388,7 +388,7 @@
 
 /datum/gas_reaction/nitriumformation/init_reqs()
 	min_requirements = list(
-		GAS_N2 = 20,
+		GAS_N2 = 50,
 		GAS_PLASMA = 20,
 		GAS_BZ = 20,
 		GAS_NITROUS = 5,
@@ -403,16 +403,16 @@
 	var/initial_plasma = air.get_moles(GAS_PLASMA)
 	var/initial_bz = air.get_moles(GAS_BZ)
 
-	var/heat_efficency = min(temperature / NITRIUM_FORMATION_TEMP_DIVISOR, initial_n2, initial_plasma, initial_bz)
+	var/heat_efficency = min(temperature / NITRIUM_FORMATION_ENERGY, initial_n2 / 2, initial_plasma, initial_bz)
 	
 	// Shouldn't produce gas from nothing.
 	if (heat_efficency <= 0 || (initial_n2 - heat_efficency < 0 ) || (initial_plasma - heat_efficency < 0) || (initial_bz - heat_efficency < 0))
 		return NO_REACTION
 
-	air.adjust_moles(GAS_N2, -heat_efficency)
+	air.adjust_moles(GAS_N2, -heat_efficency * 2)
 	air.adjust_moles(GAS_PLASMA, -heat_efficency)
 	air.adjust_moles(GAS_BZ, -heat_efficency)
-	air.adjust_moles(GAS_NITRIUM, heat_efficency * 2)
+	air.adjust_moles(GAS_NITRIUM, heat_efficency / 10)
 
 	var/energy_used = heat_efficency * NITRIUM_FORMATION_ENERGY
 	var/new_heat_capacity = air.heat_capacity()
@@ -551,9 +551,10 @@
 
 	air.adjust_moles(GAS_PLUOXIUM, -reaction_rate)
 	air.adjust_moles(GAS_NITRIUM, -reaction_rate)
+	air.adjust_moles(GAS_ANTINOB, reaction_rate) // an actual purpose for this reaction other than bombs and flamethrowers
 	air.adjust_moles(GAS_PLASMA, -plasma_burned)
 
-	if(balls_shot)
+	if(balls_shot && !isnull(location))
 		var/angular_increment = 360/balls_shot
 		var/random_starting_angle = rand(0,360)
 		for(var/i in 1 to balls_shot)

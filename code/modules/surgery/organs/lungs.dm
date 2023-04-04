@@ -565,7 +565,8 @@
 	desc = "A cybernetic version of the lungs found in traditional humanoid entities. Slightly more effecient than organic lungs."
 	icon_state = "lungs-c"
 	organ_flags = ORGAN_SYNTHETIC
-	maxHealth = 1.1 * STANDARD_ORGAN_THRESHOLD
+	maxHealth = 2 * STANDARD_ORGAN_THRESHOLD
+	organ_efficiency = 1.5
 	safe_breath_min = 13
 	safe_breath_max = 100
 
@@ -585,8 +586,8 @@
 		GAS_PLASMA = 30,
 		GAS_CO2 = 30
 	)
-	maxHealth = 2 * STANDARD_ORGAN_THRESHOLD
-	organ_efficiency = 1.5
+	maxHealth = 3 * STANDARD_ORGAN_THRESHOLD
+	organ_efficiency = 2
 	SA_para_min = 3
 	SA_sleep_min = 6
 	BZ_trip_balls_min = 2

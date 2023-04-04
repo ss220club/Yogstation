@@ -106,7 +106,7 @@ GLOBAL_LIST_INIT(gas_recipe_meta, gas_recipes_list())
 	max_temp = 12000
 	energy_release = -350000
 	dangerous = TRUE
-	requirements = list(GAS_BZ = 50, GAS_FREON = 500, GAS_NITRIUM = 800)
+	requirements = list(GAS_TRITIUM = 500, GAS_FREON = 500, GAS_NITRIUM = 500)
 	products = list(/obj/machinery/the_singularitygen/tesla = 1)
 
 /datum/gas_recipe/crystallizer/supermatter_silver
