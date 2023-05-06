@@ -55,6 +55,8 @@
 	heat_protection = CHEST|GROIN|LEGS|ARMS
 	strip_delay = 80
 	clothing_flags = THICKMATERIAL
+	mutantrace_variation = MUTANTRACE_VARIATION
+	pocket_storage_component_path = /datum/component/storage/concrete/pockets/hosarmor
 
 /obj/item/clothing/suit/armor/hos/trenchcoat
 	name = "armored trenchcoat"
@@ -63,7 +65,6 @@
 	item_state = "hostrench"
 	flags_inv = 0
 	strip_delay = 80
-	mutantrace_variation = MUTANTRACE_VARIATION
 
 /obj/item/clothing/suit/armor/vest/warden
 	name = "warden's jacket"

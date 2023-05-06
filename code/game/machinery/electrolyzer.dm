@@ -103,13 +103,13 @@
 	var/working = TRUE
 
 	if(stat & NOPOWER)
-		if (!cell.use((5 * proportion * workingPower) / (efficiency + workingPower)))
+		if (!cell.use((5 * proportion) / (efficiency + workingPower)))
 			//automatically turn off machine when cell depletes
 			on = FALSE
 			update_icon()
 			working = FALSE
 	else
-		active_power_usage = (5 * proportion * workingPower) / (efficiency + workingPower)
+		active_power_usage = (5 * proportion) / (efficiency + workingPower)
 		cell.give(charge_rate)
 
 	if(!working)
