@@ -16,7 +16,7 @@ GLOBAL_REAL_VAR(list/__auxtools_initialized)
 	}\
 	if (!__auxtools_initialized[LIB]) {\
 		if (fexists(LIB)) {\
-			var/string = call(LIB,"auxtools_init")();\
+			var/string = LIBCALL(LIB,"auxtools_init")();\
 			__auxtools_initialized[LIB] = TRUE;\
 			if(!findtext(string, "SUCCESS")) {\
 				CRASH(string);\
@@ -28,6 +28,6 @@ GLOBAL_REAL_VAR(list/__auxtools_initialized)
 
 #define AUXTOOLS_SHUTDOWN(LIB)\
 	if (__auxtools_initialized[LIB] && fexists(LIB)){\
-		call(LIB,"auxtools_shutdown")();\
+		LIBCALL(LIB,"auxtools_shutdown")();\
 		__auxtools_initialized[LIB] = FALSE;\
 	}\
