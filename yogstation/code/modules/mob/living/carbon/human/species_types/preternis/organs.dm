@@ -4,6 +4,7 @@
 	see_in_dark = PRETERNIS_NV_ON
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 	//preternis eyes need to be powered by a preternis to function, in a non preternis they slowly power down to blindness
+	status = ORGAN_ROBOTIC
 	organ_flags = ORGAN_SYNTHETIC
 
 	low_threshold_passed = span_info("Your Preternis eyes switch to battery saver mode.")
@@ -79,6 +80,15 @@
 	name = "preternis lungs"
 	desc = "A specialized set of lungs. Due to the cybernetic nature of these lungs, they are far less resistant to cold but are more heat resistant and more efficent at filtering oxygen."
 	icon_state = "lungs-c"
+
+	status = ORGAN_ROBOTIC
+	organ_flags = ORGAN_SYNTHETIC
+	safe_breath_min = 12
+
+	gas_max = list(
+		GAS_CO2 = 30, 
+		GAS_PLASMA = 10
+	)
 
 	gas_stimulation_min = 0.01 //fucking filters removing my stimulants
 
