@@ -241,13 +241,13 @@
 
 		var/bz_pp = PP(breath, GAS_BZ)
 		if(bz_pp > BZ_trip_balls_min)
-			H.hallucination += 10
+			H.adjust_hallucinations(10 SECONDS)
 			H.reagents.add_reagent(/datum/reagent/bz_metabolites,5)
 			if(prob(33))
 				H.adjustOrganLoss(ORGAN_SLOT_BRAIN, 3, 150)
 
 		else if(bz_pp > 0.01)
-			H.hallucination += 5
+			H.adjust_hallucinations(5 SECONDS)
 			H.reagents.add_reagent(/datum/reagent/bz_metabolites,1)
 
 	// Nitrium
@@ -328,7 +328,7 @@
 	// Hexane
 		gas_breathed = breath.get_moles(GAS_HEXANE)
 		if(gas_breathed > gas_stimulation_min)
-			H.hallucination += 50
+			H.adjust_hallucinations(50 SECONDS)
 			H.reagents.add_reagent(/datum/reagent/hexane,5)
 			if(prob(33))
 				H.adjustOrganLoss(ORGAN_SLOT_BRAIN, 3, 150)
