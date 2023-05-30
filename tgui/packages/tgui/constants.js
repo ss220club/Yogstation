@@ -122,7 +122,7 @@ export const RADIO_CHANNELS = [
     color: '#1ecc43',
   },
 ];
-
+/*
 const GASES = [
   {
     id: 'o2',
@@ -272,13 +272,14 @@ const GASES = [
     color: 'pink',
   },
 ];
+*/
 
 export const getGasLabel = (gasId, fallbackValue) => {
   const gasSearchString = String(gasId).toLowerCase();
   // prettier-ignore
   const gas = GASES.find((gas) => (
     gas.id === gasSearchString
-      || gas.name.toLowerCase() === gasSearchString
+    || gas.name.toLowerCase() === gasSearchString
   ));
   return (gas && gas.label) || fallbackValue || gasId;
 };
@@ -288,7 +289,7 @@ export const getGasColor = (gasId) => {
   // prettier-ignore
   const gas = GASES.find((gas) => (
     gas.id === gasSearchString
-      || gas.name.toLowerCase() === gasSearchString
+    || gas.name.toLowerCase() === gasSearchString
   ));
   return gas && gas.color;
 };
