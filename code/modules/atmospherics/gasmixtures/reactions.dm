@@ -129,7 +129,6 @@
 	)
 
 /datum/gas_reaction/tritfire/react(datum/gas_mixture/air, datum/holder)
-	var/energy_released = 0
 	var/initial_thermal_energy = air.thermal_energy()
 	var/list/cached_results = air.reaction_results
 	cached_results["fire"] = 0
@@ -186,7 +185,6 @@
 	)
 
 /datum/gas_reaction/plasmafire/react(datum/gas_mixture/air, datum/holder)
-	var/energy_released = 0
 	var/old_thermal_energy = air.thermal_energy()
 	var/temperature = air.return_temperature()
 	var/list/cached_results = air.reaction_results
