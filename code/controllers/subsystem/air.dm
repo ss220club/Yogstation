@@ -160,7 +160,7 @@ SUBSYSTEM_DEF(air)
 		currentpart = SSAIR_EQUALIZE
 
 	if(currentpart == SSAIR_EQUALIZE)
-		equalize_turfs(resumed)
+		process_turf_equalize(resumed)
 		if(state != SS_RUNNING)
 			return
 		resumed = 0
@@ -439,17 +439,11 @@ SUBSYSTEM_DEF(air)
 	if(finish_turf_processing_auxtools(MC_TICK_REMAINING_MS))
 		pause()
 
-
-/datum/controller/subsystem/air/proc/equalize_turfs(resumed = 0)
-	if(equalize_turfs_auxtools(MC_TICK_REMAINING_MS))
-		pause()
-
 /datum/controller/subsystem/air/proc/post_process_turfs(resumed = 0)
 	if(post_process_turfs_auxtools(resumed,MC_TICK_REMAINING_MS))
 		pause()
 
 /datum/controller/subsystem/air/proc/finish_turf_processing_auxtools()
-/datum/controller/subsystem/air/proc/equalize_turfs_auxtools()
 /datum/controller/subsystem/air/proc/process_turfs_auxtools()
 /datum/controller/subsystem/air/proc/post_process_turfs_auxtools()
 /datum/controller/subsystem/air/proc/process_turf_equalize_auxtools()
