@@ -133,29 +133,27 @@
 	var/initial_thermal_energy = air.thermal_energy()
 	var/list/cached_results = air.reaction_results
 	cached_results["fire"] = 0
-	var/turf/open/location = isturf(holder) ? holder : null
-	var/burned_fuel = 0
-	var/initial_trit = air.get_moles(GAS_TRITIUM)
-	var/initial_o2 = air.get_moles(GAS_O2)
-	if(initial_o2 < initial_trit || MINIMUM_TRIT_OXYBURN_ENERGY > initial_thermal_energy)
-		burned_fuel = min(initial_o2 / TRITIUM_BURN_OXY_FACTOR, initial_trit) //Yogs -- prevents negative moles of Tritium
-		air.adjust_moles(GAS_TRITIUM, -burned_fuel)
-		air.adjust_moles(GAS_TRITIUM, -burned_fuel / 2) //Yogs - no infinite tiny trit burn please
+	var/turf/open/location = null
+	if(isturf(holder))
+		location = holder
+	if(istype(holder,/datum/pipeline)) //Find the tile the reaction is occuring on, or a random part of the network if it's a pipenet.
+		var/datum/pipeline/combustion_pipenet = holder
+		location = get_turf(pick(combustion_pipenet.members))
 	else
-		burned_fuel = initial_trit / TRITIUM_BURN_TRIT_FACTOR // Yogs -- Conservation of Mass fix
-		air.adjust_moles(GAS_TRITIUM, -burned_fuel)
-		air.adjust_moles(GAS_O2, -burned_fuel / 2)
-		energy_released += (FIRE_HYDROGEN_ENERGY_RELEASED * burned_fuel * (TRITIUM_BURN_TRIT_FACTOR - 1)) 
+		location = get_turf(holder)
+	var/burned_fuel = min(air.get_moles(GAS_TRITIUM), air.get_moles(GAS_O2)) / TRITIUM_BURN_TRIT_FACTOR
+	if(burned_fuel <= 0)
+		return NO_REACTION
 
-	if(burned_fuel)
-		energy_released += (FIRE_HYDROGEN_ENERGY_RELEASED * burned_fuel)
-		if(location && prob(10) && burned_fuel > TRITIUM_MINIMUM_RADIATION_ENERGY) //woah there let's not crash the server
-			radiation_pulse(location, energy_released/TRITIUM_BURN_RADIOACTIVITY_FACTOR)
+	air.adjust_moles(GAS_TRITIUM, -burned_fuel) // Yogs -- Maybe a tiny performance boost? I'unno
+	air.adjust_moles(GAS_O2, -burned_fuel / 2)
+	air.adjust_moles(GAS_H2O, burned_fuel)// Yogs -- Conservation of Mass
+	var/energy_released = (FIRE_HYDROGEN_ENERGY_RELEASED * burned_fuel * TRITIUM_BURN_TRIT_FACTOR) // Yogs -- Fixes low-energy tritium fires
 
-		//oxygen+more-or-less hydrogen=H2O
-		air.adjust_moles(GAS_H2O, burned_fuel)
+	if(location && prob(10) && burned_fuel > TRITIUM_MINIMUM_RADIATION_ENERGY) //woah there let's not crash the server
+		radiation_pulse(location, energy_released/TRITIUM_BURN_RADIOACTIVITY_FACTOR)
 
-		cached_results["fire"] += burned_fuel
+	cached_results["fire"] += burned_fuel
 
 	if(energy_released > 0)
 		var/new_heat_capacity = air.heat_capacity()
@@ -636,30 +634,22 @@
 	)
 
 /datum/gas_reaction/h2fire/react(datum/gas_mixture/air, datum/holder)
-	var/energy_released = 0
 	var/old_thermal_energy = air.thermal_energy()
- //this speeds things up because accessing datum vars is slow
+	//this speeds things up because accessing datum vars is slow
 	var/temperature = air.return_temperature()
 	var/list/cached_results = air.reaction_results
 	cached_results["fire"] = 0
 	var/turf/open/location = isturf(holder) ? holder : null
-	var/burned_fuel = 0
-	var/initial_o2 = air.get_moles(GAS_O2)
-	var/initial_h2 = air.get_moles(GAS_H2)
-	if(initial_o2 < initial_h2 || MINIMUM_H2_OXYBURN_ENERGY > old_thermal_energy)
-		burned_fuel = min(initial_o2 / HYDROGEN_BURN_OXY_FACTOR, initial_h2) //Yogs - prevents negative mols of h2
-		air.adjust_moles(GAS_H2, -burned_fuel)
-		air.adjust_moles(GAS_O2, -burned_fuel / 2) //Yogs - only takes half a mol of O2 for a mol of H2O
-	else
-		burned_fuel = initial_h2 / HYDROGEN_BURN_H2_FACTOR	//Yogs - conservation of mass fix 
-		air.adjust_moles(GAS_H2, -burned_fuel)	// Yogs - see trit burn
-		air.adjust_moles(GAS_O2, -burned_fuel / 2)
-		energy_released += (FIRE_HYDROGEN_ENERGY_RELEASED * burned_fuel * (HYDROGEN_BURN_H2_FACTOR - 1)) // Yogs -- burns twice as fast with half the energy
+	var/burned_fuel = min(air.get_moles(GAS_H2), air.get_moles(GAS_O2)) / HYDROGEN_BURN_H2_FACTOR
+	if(burned_fuel <= 0)
+		return NO_REACTION
+	
+	air.adjust_moles(GAS_H2, -burned_fuel)	// Yogs - see trit burn
+	air.adjust_moles(GAS_O2, -burned_fuel / 2)
+	air.adjust_moles(GAS_H2O, burned_fuel)
+	var/energy_released = (FIRE_HYDROGEN_ENERGY_RELEASED * burned_fuel * HYDROGEN_BURN_H2_FACTOR) // Yogs -- burns twice as fast with half the energy
 
-	if(burned_fuel)
-		energy_released += (FIRE_HYDROGEN_ENERGY_RELEASED * burned_fuel)
-		air.adjust_moles(GAS_H2O, burned_fuel)
-		cached_results["fire"] += burned_fuel
+	cached_results["fire"] += burned_fuel
 
 	if(energy_released > 0)
 		var/new_heat_capacity = air.heat_capacity()

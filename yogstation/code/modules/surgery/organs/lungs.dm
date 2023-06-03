@@ -4,7 +4,7 @@
 	icon = 'yogstation/icons/obj/surgery.dmi'
 	icon_state = "lungs-ash"
 
-	safe_breath_min = 3
+	safe_breath_min = 6
 	safe_breath_max = 18
 	
 	gas_min = list(

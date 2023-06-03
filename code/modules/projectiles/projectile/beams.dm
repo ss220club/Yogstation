@@ -235,17 +235,17 @@
 		M.visible_message(span_danger("[M] explodes into a shower of gibs!"))
 		M.gib()
 
-/obj/item/projectile/beam/plasma
+/obj/item/projectile/beam/grimdark
 	pass_flags = NONE
 	light_color = LIGHT_COLOR_BLUE
 	impact_effect_type = /obj/effect/temp_visual/impact_effect/blue_laser
-	name = "plasma ball"
-	icon_state = "plasmagun"
+	name = "plasma blast"
+	icon_state = "blue_laser"
 	damage = 50
 	wound_bonus = 0
 	speed = 1.4 // plasma ball slow
 
-/obj/item/projectile/beam/plasma/on_hit(atom/target, blocked = FALSE)
+/obj/item/projectile/beam/grimdark/on_hit(atom/target, blocked = FALSE)
 	. = ..()
 	if (!QDELETED(target) && (isturf(target) || istype(target, /obj/structure/)))
 		if(isobj(target))
@@ -253,7 +253,7 @@
 		else
 			SSexplosions.medturf += target
 
-/obj/item/projectile/beam/plasma/pistol
+/obj/item/projectile/beam/grimdark/pistol
 	damage = 35
 
 /obj/item/projectile/beam/laser/lasgun
