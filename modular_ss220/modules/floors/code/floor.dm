@@ -1,9 +1,3 @@
-#define DEFAULT_UNDERLAY_ICON 			'modular_ss220/modules/floors/icons/floors.dmi'
-#define DEFAULT_UNDERLAY_ICON_STATE 	"plating"
-
-/turf
-	icon = 'modular_ss220/modules/floors/icons/floors.dmi'
-
 /turf/open/floor
 	icon = 'modular_ss220/modules/floors/icons/floors.dmi'
 	icon_regular_floor = 'modular_ss220/modules/floors/icons/floors.dmi'
