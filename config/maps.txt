@@ -12,6 +12,11 @@ Format:
 	disabled (disables the map)
 	votable (is this map votable)
 
+map cyberiad
+	voteweight 0.7
+	votable
+endmap
+
 map yogstation
 	voteweight 0.7
 	votable
