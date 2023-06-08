@@ -31,7 +31,7 @@
 
 
 /datum/keybinding/human/bag_equip
-	hotkey_keys = list("ShiftB")
+	hotkey_keys = list("ShiftV") // SS220 EDIT
 	name = "bag_equip"
 	full_name = "Bag equip"
 	description = "Put held thing in backpack or take out most recent thing from backpack"

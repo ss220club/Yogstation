@@ -41,7 +41,7 @@
 
 
 /datum/keybinding/client/communication/mentor_say
-	hotkey_keys = list("F4")
+	hotkey_keys = list("ShiftF5") // SS220 EDIT
 	name = MSAY_CHANNEL
 	full_name = "Mentor Say"
 	description = ""

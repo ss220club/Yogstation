@@ -7,14 +7,14 @@
 
 
 /datum/keybinding/admin/admin_say
-    hotkey_keys = list("F3")
+    hotkey_keys = list("F5") // SS220 EDIT
     name = ASAY_CHANNEL
     full_name = "Admin say"
     description = "Talk with other admins."
 
 
 /datum/keybinding/admin/admin_ghost
-    hotkey_keys = list("F5")
+    hotkey_keys = list("F6") // SS220 EDIT
     name = "admin_ghost"
     full_name = "Aghost"
     description = "Go ghost"
@@ -25,7 +25,7 @@
 
 
 /datum/keybinding/admin/player_panel
-    hotkey_keys = list("F6")
+    hotkey_keys = list("F7")
     name = "player_panel"
     full_name = "Player Panel"
     description = "Opens up the player panel"
@@ -36,7 +36,7 @@
 
 
 /datum/keybinding/admin/toggle_buildmode_self
-	hotkey_keys = list("F7")
+	hotkey_keys = list("ShiftF7") // SS220 EDIT
 	name = "toggle_buildmode_self"
 	full_name = "Toggle Buildmode Self"
 	description = "Toggles buildmode"
@@ -58,7 +58,7 @@
 
 
 /datum/keybinding/admin/invisimin
-	hotkey_keys = list("F8")
+	hotkey_keys = list("F9") // SS220 EDIT
 	name = "invisimin"
 	full_name = "Admin invisibility"
 	description = "Toggles ghost-like invisibility (Don't abuse this)"
