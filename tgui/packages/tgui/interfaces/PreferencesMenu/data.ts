@@ -143,6 +143,7 @@ export type PreferencesMenuData = {
       gender: Gender;
       joblessrole: JoblessRole;
       species: string;
+      tts_seed: string;
     };
 
     randomization: Record<string, RandomSetting>;
