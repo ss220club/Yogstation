@@ -5,6 +5,8 @@ $include secret.txt
 $include dbconfig.txt
 $include antag_rep.txt
 
+$include ss220/ss220_config.txt
+
 # You can use the @ character at the beginning of a config option to lock it from being edited in-game
 # Example usage:
 # @SERVERNAME tgstation
