@@ -1,6 +1,5 @@
 ## Yogstation codebase
 
-[![Build Status](https://github.com/yogstation13/Yogstation/workflows/Turdis/badge.svg?branch=master)](https://github.com/yogstation13/Yogstation/actions?query=workflow%3ATurdis+branch%3Amaster)
 [![forinfinityandbyond](https://user-images.githubusercontent.com/5211576/29499758-4efff304-85e6-11e7-8267-62919c3688a9.gif)](https://www.reddit.com/r/SS13/comments/5oplxp/what_is_the_main_problem_with_byond_as_an_engine/dclbu1a)
 
 ![badge?](https://forthebadge.com/images/badges/0-percent-optimized.svg)
@@ -14,13 +13,7 @@
 ![b-a-d-g-e](https://forthebadge.com/images/badges/uses-git.svg)
 ![B.A.D.G.E.](https://forthebadge.com/images/badges/you-didnt-ask-for-this.svg)
 
-[**Website**](https://yogstation.net)
-
-[**Code**](https://github.com/yogstation13/yogstation)
-
 [**Wiki**](https://wiki.yogstation.net)
-
-[**Discord**](https://discord.gg/0keg6hQH05Ha8OfO)
 
 [**Yogstation GitHub Guidelines**](https://github.com/yogstation13/Yogstation/blob/master/.github/CONTRIBUTING.md#yogstation-github-guidelines)
 
