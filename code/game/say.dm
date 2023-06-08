@@ -33,7 +33,6 @@ GLOBAL_LIST_INIT(freqtospan, list(
 
 /atom/movable/proc/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, list/message_mods = list())
 	SEND_SIGNAL(src, COMSIG_MOVABLE_HEAR, args)
-	to_chat(src, "Hearatom [raw_message]")
 
 /atom/movable/proc/can_speak()
 	return 1
