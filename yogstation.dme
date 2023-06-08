@@ -3669,6 +3669,7 @@
 #include "interface\stylesheet.dm"
 #include "interface\skin.dmf"
 #include "modular_ss220\modules\cyrillic_keys\code\communication.dm"
+#include "modular_ss220\modules\floors\code\floor.dm"
 #include "modular_ss220\modules\fullscreen\code\client.dm"
 #include "modular_ss220\modules\fullscreen\code\client_defines.dm"
 #include "modular_ss220\modules\fullscreen\code\client_procs.dm"
