@@ -87,29 +87,36 @@
  //SS220 FLOORS//
 
 /turf/open/floor/wood/oak
+	icon = 'modular_ss220/modules/floors/icons/floors.dmi'
 	icon_state = "wood-oak"
 	broken_states = list("wood-oak-broken", "wood-oak-broken2", "wood-oak-broken3", "wood-oak-broken4", "wood-oak-broken5", "wood-oak-broken6", "wood-oak-broken7")
 
 /turf/open/floor/wood/birch
+	icon = 'modular_ss220/modules/floors/icons/floors.dmi'
 	icon_state = "wood-birch"
 	broken_states = list("wood-birch-broken", "wood-birch-broken2", "wood-birch-broken3", "wood-birch-broken4", "wood-birch-broken5", "wood-birch-broken6", "wood-birch-broken7")
 
 /turf/open/floor/wood/cherry
+	icon = 'modular_ss220/modules/floors/icons/floors.dmi'
 	icon_state = "wood-cherry"
 	broken_states = list("wood-cherry-broken", "wood-cherry-broken2", "wood-cherry-broken3", "wood-cherry-broken4", "wood-cherry-broken5", "wood-cherry-broken6", "wood-cherry-broken7")
 
 /turf/open/floor/wood/fancy/oak
+	icon = 'modular_ss220/modules/floors/icons/floors.dmi'
 	icon_state = "fancy-wood-oak"
 	broken_states = list("fancy-wood-oak-broken", "fancy-wood-oak-broken2", "fancy-wood-oak-broken3", "fancy-wood-oak-broken4", "fancy-wood-oak-broken5", "fancy-wood-oak-broken6", "fancy-wood-oak-broken7")
 
 /turf/open/floor/wood/fancy/birch
+	icon = 'modular_ss220/modules/floors/icons/floors.dmi'
 	icon_state = "fancy-wood-birch"
 	broken_states = list("fancy-wood-birch-broken", "fancy-wood-birch-broken2", "fancy-wood-birch-broken3", "fancy-wood-birch-broken4", "fancy-wood-birch-broken5", "fancy-wood-birch-broken6", "fancy-wood-birch-broken7")
 
 /turf/open/floor/wood/fancy/cherry
+	icon = 'modular_ss220/modules/floors/icons/floors.dmi'
 	icon_state = "fancy-wood-cherry"
 	broken_states = list("fancy-wood-cherry-broken", "fancy-wood-cherry-broken2", "fancy-wood-cherry-broken3", "fancy-wood-cherry-broken4", "fancy-wood-cherry-broken5", "fancy-wood-cherry-broken6", "fancy-wood-cherry-broken7")
 
 /turf/open/floor/wood/fancy/light
+	icon = 'modular_ss220/modules/floors/icons/floors.dmi'
 	icon_state = "light-fancy-wood"
 	broken_states = list("light-fancy-wood-broken", "light-fancy-wood-broken2", "light-fancy-wood-broken3", "light-fancy-wood-broken4", "light-fancy-wood-broken5", "light-fancy-wood-broken6", "light-fancy-wood-broken7")
