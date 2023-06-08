@@ -55,7 +55,7 @@ jobs:
         uses: yogstation13/DreamAnnotate@v2
         if: always()
         with: 
-          outputFile: ${GITHUB_WORKSPACE}/output-annotations.txt
+          outputFile: output-annotations.txt
         
   compile:
     name: Compile All Maps
