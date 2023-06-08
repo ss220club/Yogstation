@@ -1,7 +1,4 @@
-/client/verb/toggle_fullscreen()
-	set name = "Toggle Fullscreen"
-	set category = "OOC"
-
+/client/proc/switch_fullscreen()
 	fullscreen = !fullscreen
 
 	if (fullscreen)
@@ -17,3 +14,9 @@
 		winset(usr, "mainwindow", "can-resize=true")
 		winset(usr, "mainwindow", "is-maximized=false")
 		winset(usr, "mainwindow", "on-size=attempt_auto_fit_viewport")
+
+/client/verb/toggle_fullscreen()
+	set name = "Toggle Fullscreen"
+	set category = "OOC"
+
+	switch_fullscreen()
