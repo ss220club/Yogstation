@@ -15,8 +15,8 @@
 	if (!..(preferences))
 		return FALSE
 	
-	// Job needs to be medium or high for the preference to show up
-	return preferences.job_preferences["Bartender"] >= JP_MEDIUM
+	// Job needs to be low or high for the preference to show up
+	return preferences.job_preferences["Bartender"] >= JP_LOW
 
 /datum/preference/choiced/bar_choice/apply_to_human(mob/living/carbon/human/target, value)
 	return

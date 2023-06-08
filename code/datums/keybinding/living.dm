@@ -7,7 +7,7 @@
 
 
 /datum/keybinding/carbon/rest
-	hotkey_keys = list("U")
+	hotkey_keys = list("ShiftB") // SS220 EDIT
 	name = "rest"
 	full_name = "Rest"
 	description = "Lay down, or get up."

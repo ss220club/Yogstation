@@ -66,7 +66,7 @@
 
 
 /datum/keybinding/carbon/give
-	hotkey_keys = list("G")
+	hotkey_keys = list("V") // SS220 EDIT
 	name = "Give_Item"
 	full_name = "Give item"
 	description = "Give the item you're currently holding"
