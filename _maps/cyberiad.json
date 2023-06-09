@@ -1,0 +1,10 @@
+{
+    "map_name": "Cyberiad",
+    "map_path": "map_files/Cyberiad",
+    "map_file": "Cyberiad.dmm",
+    "shuttles": {
+	    "cargo": "cargo_box",
+	    "ferry": "ferry_fancy",
+	    "emergency": "emergency_box"
+    }
+}
