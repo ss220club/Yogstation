@@ -74,7 +74,7 @@ jobs:
         uses: repo-sync/pull-request@v2
         if: steps.main.outputs.abort == 0
         with:
-          github_token: ${{ secrets.GH_PAT }}
+          github_token: ${GH_PAT:-$GITHUB_TOKEN}
           source_branch: ${{ env.UPDATE_BRANCH }}
           destination_branch: ${{ steps.main.outputs.current_branch }}
           pr_title: "[Sync] Pull Upstream"
