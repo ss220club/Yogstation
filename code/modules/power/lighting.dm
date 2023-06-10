@@ -12,6 +12,9 @@
 #define BROKEN_SPARKS_MIN (30 SECONDS)
 #define BROKEN_SPARKS_MAX (90 SECONDS)
 
+#define LIGHT_ON_DELAY_UPPER (4 SECONDS)
+#define LIGHT_ON_DELAY_LOWER (1 SECONDS)
+
 /obj/item/wallframe/light_fixture
 	name = "light fixture frame"
 	desc = "Used for building lights."
@@ -254,6 +257,11 @@
 	var/bulb_vacuum_colour = "#4F82FF"	// colour of the light when air alarm is set to severe
 	var/bulb_vacuum_brightness = 8
 
+	//SS220 ADDITION BEGIN
+	var/fire_colour = COLOR_FIRE_LIGHT_RED //The Light colour to use when working in fire alarm status
+	var/fire_brightness = 4 ///The Light range to use when working in fire alarm status
+	//SS220 ADDITION END
+
 /obj/machinery/light/broken
 	status = LIGHT_BROKEN
 	icon_state = "tube-broken"
@@ -353,6 +361,7 @@
 				icon_state = "[base_state]_vacuum"
 			else
 				icon_state = "[base_state]"
+			//SS220 EDIT END
 				if(on && !forced_off)
 					var/mutable_appearance/glowybit = mutable_appearance(overlayicon, base_state, layer, EMISSIVE_PLANE)
 					glowybit.alpha = clamp(light_power*250, 30, 200)
@@ -372,12 +381,13 @@
 	update()
 
 // update the icon_state and luminosity of the light depending on its state
-/obj/machinery/light/proc/update(trigger = TRUE)
+/obj/machinery/light/proc/update(trigger = TRUE, instant = FALSE, play_sound = TRUE)
 	switch(status)
 		if(LIGHT_BROKEN,LIGHT_BURNED,LIGHT_EMPTY)
 			on = FALSE
 	emergency_mode = FALSE
 	if(on)
+	/* SS220 EDIT - ORIGINAL	
 		var/BR = brightness
 		var/PO = bulb_power
 		var/CO = bulb_colour
@@ -388,7 +398,7 @@
 			CO = bulb_emergency_colour
 		else if (A && A.vacuum)
 			CO = bulb_vacuum_colour
-			BR = bulb_vacuum_brightness
+			BR = bulb_vacuum_brightness	
 		else if (nightshift_enabled)
 			BR = nightshift_brightness
 			PO = nightshift_light_power
@@ -406,6 +416,17 @@
 			else
 				use_power = ACTIVE_POWER_USE
 				set_light(BR, PO, CO)
+	*/
+	//SS220 EDIT CHANGE BEGIN - ASTHETICS - LIGHTNING
+		if(instant)
+			turn_on(trigger, play_sound)
+		else if(maploaded)
+			turn_on(trigger, play_sound)
+			maploaded = FALSE
+		else if(!turning_on)
+			turning_on = TRUE
+			addtimer(CALLBACK(src, PROC_REF(turn_on), trigger, play_sound), rand(LIGHT_ON_DELAY_LOWER, LIGHT_ON_DELAY_UPPER))
+	//SS220 EDIT END
 	else if(has_emergency_power(LIGHT_EMERGENCY_POWER_USE) && !turned_off())
 		use_power = IDLE_POWER_USE
 		emergency_mode = TRUE
@@ -425,6 +446,12 @@
 			removeStaticPower(static_power_used, AREA_USAGE_STATIC_LIGHT)
 
 	broken_sparks(start_only=TRUE)
+
+
+//SS220 EDIT ADDITION BEGIN - ASTHETICS - LIGHTNING
+#undef LIGHT_ON_DELAY_UPPER
+#undef LIGHT_ON_DELAY_LOWER
+//SS220 EDIT END
 
 /obj/machinery/light/update_atom_colour()
 	..()
@@ -477,6 +504,10 @@
 			. += "The [fitting] has been smashed."
 	if(cell)
 		. += "Its backup power charge meter reads [round((cell.charge / cell.maxcharge) * 100, 0.1)]%."
+	//SS220 EDIT ADDITION
+	if(constant_flickering)
+		. += span_danger("The lighting ballast appears to be damaged, this could be fixed with a multitool.")
+	//SS220 EDIT END
 
 
 
@@ -620,7 +651,12 @@
 // true if area has power and lightswitch is on
 /obj/machinery/light/proc/has_power()
 	var/area/A = get_area(src)
+	//SS220 EDIT ADDITION BEGIN
+	if(isnull(A))
+		return FALSE
+	//SS220 EDIT END
 	return A.lightswitch && A.power_light
+	
 
 // returns whether this light has emergency power
 // can also return if it has access to a certain amount of that power
@@ -653,10 +689,10 @@
 			if(status != LIGHT_OK)
 				break
 			on = !on
-			update(0)
+			update(FALSE, TRUE) //SS220 EDIT CHANGE
 			sleep(rand(0.5, 1.5) SECONDS)
 		on = (status == LIGHT_OK) && !forced_off
-		update(0)
+		update(FALSE, TRUE) // SS220 EDIT CHANGE
 	flickering = 0
 
 // ai attack - make lights flicker, because why not

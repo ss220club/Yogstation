@@ -687,4 +687,20 @@ Class Procs:
 	if(can_be_occupant(caller))
 		return TRUE
 
-	
+//SS220 ADDITION BEGIN
+///Get a valid powered area to reference for power use, mainly for wall-mounted machinery that isn't always mapped directly in a powered location.
+/obj/machinery/proc/get_room_area(area/machine_room)
+	var/area/machine_area = get_area(src)
+	if(!machine_area.always_unpowered) ///check our loc first to see if its a powered area
+		machine_room = machine_area
+		return machine_room
+	var/turf/mounted_wall = get_step(src,dir)
+	if (mounted_wall && istype(mounted_wall, /turf/closed))
+		var/area/wall_area = get_area(mounted_wall)
+		if(!wall_area.always_unpowered) //loc area wasn't good, checking adjacent wall for a good area to use
+			machine_room = wall_area
+			return machine_room
+	machine_room = machine_area ///couldn't find a proper powered area on loc or adjacent wall, defaulting back to loc and blaming mappers
+	return machine_room
+//SS220 ADDITION END
+
