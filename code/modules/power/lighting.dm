@@ -257,11 +257,6 @@
 	var/bulb_vacuum_colour = "#4F82FF"	// colour of the light when air alarm is set to severe
 	var/bulb_vacuum_brightness = 8
 
-	//SS220 ADDITION BEGIN
-	var/fire_colour = COLOR_FIRE_LIGHT_RED //The Light colour to use when working in fire alarm status
-	var/fire_brightness = 4 ///The Light range to use when working in fire alarm status
-	//SS220 ADDITION END
-
 /obj/machinery/light/broken
 	status = LIGHT_BROKEN
 	icon_state = "tube-broken"
@@ -361,7 +356,6 @@
 				icon_state = "[base_state]_vacuum"
 			else
 				icon_state = "[base_state]"
-			//SS220 EDIT END
 				if(on && !forced_off)
 					var/mutable_appearance/glowybit = mutable_appearance(overlayicon, base_state, layer, EMISSIVE_PLANE)
 					glowybit.alpha = clamp(light_power*250, 30, 200)
@@ -381,7 +375,7 @@
 	update()
 
 // update the icon_state and luminosity of the light depending on its state
-/obj/machinery/light/proc/update(trigger = TRUE, instant = FALSE, play_sound = TRUE)
+/obj/machinery/light/proc/update(trigger = TRUE, instant = FALSE, play_sound = TRUE) //SS220 EDIT
 	switch(status)
 		if(LIGHT_BROKEN,LIGHT_BURNED,LIGHT_EMPTY)
 			on = FALSE

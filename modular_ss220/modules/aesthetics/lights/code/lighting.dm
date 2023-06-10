@@ -10,13 +10,13 @@
 /obj/machinery/light
 	icon = 'modular_ss220/modules/aesthetics/lights/icons/lighting.dmi'
 	overlayicon = 'modular_ss220/modules/aesthetics/lights/icons/lighting_overlay.dmi'
-	fire_brightness = 4.5
-	fire_colour = "#FF3232"
 	var/maploaded = FALSE
 	var/turning_on = FALSE
 	var/constant_flickering = FALSE
 	var/flicker_timer = null
 	var/roundstart_flicker = FALSE
+	var/fire_colour = "#FF3C3C" //The Light colour to use when working in fire alarm status
+	var/fire_brightness = 5 ///The Light range to use when working in fire alarm status
 
 /obj/item/light/tube
 	icon = 'modular_ss220/modules/aesthetics/lights/icons/lighting.dmi'
