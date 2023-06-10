@@ -1,6 +1,12 @@
 #define NIGHTSHIFT_LIGHT_MODIFIER 0.15
 #define NIGHTSHIFT_COLOR_MODIFIER 0.10
 
+/// When a tooltype_act proc is successful
+#define TOOL_ACT_TOOLTYPE_SUCCESS (1<<0)
+/// When [COMSIG_ATOM_TOOL_ACT] blocks the act
+#define TOOL_ACT_SIGNAL_BLOCKING (1<<1)
+
+
 /obj/machinery/light
 	icon = 'modular_ss220/modules/aesthetics/lights/icons/lighting.dmi'
 	overlayicon = 'modular_ss220/modules/aesthetics/lights/icons/lighting_overlay.dmi'
@@ -122,6 +128,21 @@
 		balloon_alert(user, "ballast repaired!")
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 	return ..()
+
+///Get a valid powered area to reference for power use, mainly for wall-mounted machinery that isn't always mapped directly in a powered location.
+/obj/machinery/proc/get_room_area(area/machine_room)
+	var/area/machine_area = get_area(src)
+	if(!machine_area.always_unpowered) ///check our loc first to see if its a powered area
+		machine_room = machine_area
+		return machine_room
+	var/turf/mounted_wall = get_step(src,dir)
+	if (mounted_wall && istype(mounted_wall, /turf/closed))
+		var/area/wall_area = get_area(mounted_wall)
+		if(!wall_area.always_unpowered) //loc area wasn't good, checking adjacent wall for a good area to use
+			machine_room = wall_area
+			return machine_room
+	machine_room = machine_area ///couldn't find a proper powered area on loc or adjacent wall, defaulting back to loc and blaming mappers
+	return machine_room
 
 #undef NIGHTSHIFT_LIGHT_MODIFIER
 #undef NIGHTSHIFT_COLOR_MODIFIER

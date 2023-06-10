@@ -122,40 +122,52 @@
 
 //SIDING GRAY FLOORS//
 /turf/open/floor/plasteel/siding
+	icon = 'modular_ss220/modules/aesthetics/floors/icons/floors.dmi'
 	icon_state = "floor_edge"
 
 /turf/open/floor/plasteel/siding/corner
+	icon = 'modular_ss220/modules/aesthetics/floors/icons/floors.dmi'
 	icon_state = "floor_corner"
 
 /turf/open/floor/plasteel/siding/half
+	icon = 'modular_ss220/modules/aesthetics/floors/icons/floors.dmi'
 	icon_state = "floor_half"
 
 /turf/open/floor/plasteel/siding/large
+	icon = 'modular_ss220/modules/aesthetics/floors/icons/floors.dmi'
 	icon_state = "floor_large"
 
 //SIDING WHITE FLOORS//
 
 /turf/open/floor/plasteel/white/siding
+	icon = 'modular_ss220/modules/aesthetics/floors/icons/floors.dmi'
 	icon_state = "white_edge"
 
 /turf/open/floor/plasteel/white/siding/corner
+	icon = 'modular_ss220/modules/aesthetics/floors/icons/floors.dmi'
 	icon_state = "white_corner"
 
 /turf/open/floor/plasteel/white/siding/half
+	icon = 'modular_ss220/modules/aesthetics/floors/icons/floors.dmi'
 	icon_state = "white_half"
 
 /turf/open/floor/plasteel/white/siding/large
+	icon = 'modular_ss220/modules/aesthetics/floors/icons/floors.dmi'
 	icon_state = "white_large"
 
 //SIDING DARK FLOORS//
 /turf/open/floor/plasteel/dark/siding/
+	icon = 'modular_ss220/modules/aesthetics/floors/icons/floors.dmi'
 	icon_state = "dark_edge"
 
 /turf/open/floor/plasteel/dark/siding/corner
+	icon = 'modular_ss220/modules/aesthetics/floors/icons/floors.dmi'
 	icon_state = "dark_corner"
 
 /turf/open/floor/plasteel/dark/siding/half
+	icon = 'modular_ss220/modules/aesthetics/floors/icons/floors.dmi'
 	icon_state = "dark_half"
 
 /turf/open/floor/plasteel/dark/siding/large
+	icon = 'modular_ss220/modules/aesthetics/floors/icons/floors.dmi'
 	icon_state = "dark_large"
