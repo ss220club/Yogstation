@@ -1,0 +1,29 @@
+name: Deploy
+
+concurrency:
+  group: deploy
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['master']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger update
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.GAME1_HOST }}
+          username: ${{ secrets.GAME1_USERNAME }}
+          key: ${{ secrets.GAME1_SSH_KEY }}
+          script: |
+            cd /opt/ss13/yogstation/
+            git pull --ff-only
+            ./tools/build/build
+            zip yogstation.1.rsc.zip yogstation.rsc
+            ../mc cp yogstation.1.rsc.zip r2/ss220
+            rm yogstation.1.rsc.zip
+            echo "Done"
