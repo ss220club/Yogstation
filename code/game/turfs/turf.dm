@@ -88,8 +88,6 @@ GLOBAL_LIST_EMPTY(station_turfs)
 	if (opacity)
 		has_opaque_atom = TRUE
 
-	ComponentInitialize()
-	
 	if(isopenturf(src))
 		var/turf/open/O = src
 		__auxtools_update_turf_temp_info(isspaceturf(get_z_base_turf()) && !O.planetary_atmos)

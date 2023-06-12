@@ -35,7 +35,9 @@
 		air = new(2500,src)
 		air.copy_from_turf(src)
 		update_air_ref(planetary_atmos ? 1 : 2)
-	. = ..()
+	if(wet)
+		AddComponent(/datum/component/wet_floor, wet, INFINITY, 0, INFINITY, TRUE)
+	return ..()
 
 /turf/open/Destroy()
 	if(active_hotspot)

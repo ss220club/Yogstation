@@ -25,9 +25,6 @@
 	START_PROCESSING(SSmachines, src)
 	update_icon()
 	component_parts = list(new /obj/item/circuitboard/machine/generator)
-
-/obj/machinery/power/generator/ComponentInitialize()
-	. = ..()
 	AddComponent(/datum/component/simple_rotation,ROTATION_ALTCLICK | ROTATION_CLOCKWISE | ROTATION_COUNTERCLOCKWISE | ROTATION_VERBS )
 
 /obj/machinery/power/generator/Destroy()

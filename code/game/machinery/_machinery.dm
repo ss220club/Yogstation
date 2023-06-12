@@ -431,6 +431,7 @@ Class Procs:
 		SEND_SIGNAL(src, COMSIG_MACHINERY_BROKEN, damage_flag)
 		update_icon()
 		return TRUE
+	return FALSE
 
 /obj/machinery/contents_explosion(severity, target)
 	if(occupant)

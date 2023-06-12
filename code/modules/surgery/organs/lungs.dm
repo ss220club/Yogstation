@@ -285,15 +285,10 @@
 		breath.adjust_moles(GAS_FREON, -gas_breathed)
 
 	// Healium
-		REMOVE_TRAIT(H, TRAIT_SURGERY_PREPARED, "healium")
 		var/healium_pp = PP(breath,GAS_HEALIUM)
 		if(healium_pp > SA_sleep_min)
 			var/existing = H.reagents.get_reagent_amount(/datum/reagent/healium)
-			ADD_TRAIT(H, TRAIT_SURGERY_PREPARED, "healium")
 			H.reagents.add_reagent(/datum/reagent/healium,max(0, 1*eff - existing))
-			H.adjustFireLoss(-7)
-			H.adjustToxLoss(-5)
-			H.adjustBruteLoss(-5)
 		gas_breathed = breath.get_moles(GAS_HEALIUM)
 		if(gas_breathed > gas_stimulation_min && !helium_speech)
 			helium_speech = TRUE
