@@ -3677,6 +3677,8 @@
 #include "modular_ss220\modules\fullscreen\code\client.dm"
 #include "modular_ss220\modules\fullscreen\code\client_defines.dm"
 #include "modular_ss220\modules\fullscreen\code\client_procs.dm"
+#include "modular_ss220\modules\jukebox\code\dance_machine.dm"
+#include "modular_ss220\modules\jukebox\code\jukebox_subsystem.dm"
 #include "modular_ss220\modules\mapping\code\landmarks.dm"
 #include "modular_ss220\modules\mapping\code\mapping.dm"
 #include "modular_ss220\modules\mapping\code\areas\maintenance_areas.dm"
