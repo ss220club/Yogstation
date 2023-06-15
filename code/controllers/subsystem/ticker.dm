@@ -120,8 +120,8 @@ SUBSYSTEM_DEF(ticker)
 	'modular_ss220/modules/music&sounds/sound/music/Human.ogg',
 	'modular_ss220/modules/music&sounds/sound/music/Traitor.ogg',
 	'modular_ss220/modules/music&sounds/sound/music/Space_Asshole.ogg',
-	'modular_ss220/modules/music&sounds/sound/music/Endless_Space.ogg'
-	'modular_ss220/modules/music&sounds/sound/music/Treacherous_Voyage.ogg',) //SS220 EDIT - ORIGINAL: choose_lobby_music()
+	'modular_ss220/modules/music&sounds/sound/music/Endless_Space.ogg',
+	'modular_ss220/modules/music&sounds/sound/music/Treacherous_Voyage.ogg') //SS220 EDIT - ORIGINAL: choose_lobby_music()
 
 	if(!login_music)
 		to_chat(world, span_boldwarning("Could not load lobby music.")) //yogs end
