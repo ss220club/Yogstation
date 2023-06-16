@@ -209,7 +209,7 @@ GLOBAL_REAL(Debugger, /datum/debugger) = new
 		Initialize(20, TRUE)
 
 // Please don't stuff random bullshit here,
-// Make a subsystem, give it the SS_NO_FIRE flag, and do your work in it's Initialize()
+// Make a subsystem, give it the SS_NO_FIRE flag, and do your work in it's Initialize(mapload)
 /datum/controller/master/Initialize(delay, init_sss, tgs_prime)
 	set waitfor = 0
 
@@ -324,9 +324,9 @@ GLOBAL_REAL(Debugger, /datum/debugger) = new
 	if(result && !(result in valid_results))
 		warning("[subsystem.name] subsystem initialized, returning invalid result [result]. This is a bug.")
 
-	// just returned ..() or didn't implement Initialize() at all
+	// just returned ..() or didn't implement Initialize(mapload) at all
 	if(result == SS_INIT_NONE)
-		warning("[subsystem.name] subsystem does not implement Initialize() or it returns ..(). If the former is true, the SS_NO_INIT flag should be set for this subsystem.")
+		warning("[subsystem.name] subsystem does not implement Initialize(mapload) or it returns ..(). If the former is true, the SS_NO_INIT flag should be set for this subsystem.")
 
 	if(result != SS_INIT_FAILURE)
 		// Some form of success, implicit failure, or the SS in unused.

@@ -15,7 +15,7 @@
 	var/datum/gas_mixture/bomb_result
 	var/list/bomb_explosion_size = null
 
-/obj/machinery/computer/atmos_sim/Initialize()
+/obj/machinery/computer/atmos_sim/Initialize(mapload)
 	tank_mix = new
 	bomb_1 = new
 	bomb_2 = new

@@ -23,6 +23,10 @@
 	var/heat_capacity = 0
 	var/interactive = TRUE // So mapmakers can disable interaction.
 
+/obj/machinery/atmospherics/components/unary/thermomachine/Initialize(mapload)
+	. = ..()
+	initialize_directions = dir
+
 /obj/machinery/atmospherics/components/unary/thermomachine/on_construction()
 	var/obj/item/circuitboard/machine/thermomachine/board = circuit
 	if(board)
@@ -182,7 +186,7 @@
 	on = TRUE
 	icon_state = "freezer_1"
 
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer/on/Initialize()
+/obj/machinery/atmospherics/components/unary/thermomachine/freezer/on/Initialize(mapload)
 	. = ..()
 	if(target_temperature == initial(target_temperature))
 		target_temperature = min_temperature
@@ -190,7 +194,7 @@
 /obj/machinery/atmospherics/components/unary/thermomachine/freezer/on/coldroom
 	name = "cold room freezer"
 
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer/on/coldroom/Initialize()
+/obj/machinery/atmospherics/components/unary/thermomachine/freezer/on/coldroom/Initialize(mapload)
 	. = ..()
 	target_temperature = T0C-80
 
