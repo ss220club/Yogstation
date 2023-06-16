@@ -69,7 +69,7 @@
 
 	var/crit_stabilizing_reagent = /datum/reagent/medicine/epinephrine
 
-/obj/item/organ/lungs/Initialize()
+/obj/item/organ/lungs/Initialize(mapload)
 	. = ..()
 	populate_gas_info()
 

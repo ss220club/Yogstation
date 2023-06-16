@@ -14,7 +14,7 @@
 
 	var/maximum_pressure = 90 * ONE_ATMOSPHERE
 
-/obj/machinery/portable_atmospherics/Initialize()
+/obj/machinery/portable_atmospherics/Initialize(mapload)
 	. = ..()
 	SSair.start_processing_machine(src)
 

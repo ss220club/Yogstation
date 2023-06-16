@@ -18,7 +18,7 @@
         ),\
     )
 
-/obj/machinery/atmospherics/pipe/Initialize()
+/obj/machinery/atmospherics/pipe/Initialize(mapload)
 	. = ..()
 	add_atom_colour(pipe_color, FIXED_COLOUR_PRIORITY)
 	volume = 35 * device_type

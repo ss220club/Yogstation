@@ -14,7 +14,7 @@
 	var/volume = 10000 //in liters
 	var/gas_type = 0
 
-/obj/machinery/atmospherics/components/unary/tank/Initialize()
+/obj/machinery/atmospherics/components/unary/tank/Initialize(mapload)
 	. = ..()
 	var/datum/gas_mixture/air_contents = airs[1]
 	air_contents.set_volume(volume)
@@ -28,7 +28,7 @@
 	icon_state = "grey"
 	name = "pressure tank (Air)"
 
-/obj/machinery/atmospherics/components/unary/tank/air/Initialize()
+/obj/machinery/atmospherics/components/unary/tank/air/Initialize(mapload)
 	. = ..()
 	var/datum/gas_mixture/air_contents = airs[1]
 	air_contents.set_moles(GAS_O2, AIR_CONTENTS * 0.2)
@@ -37,7 +37,7 @@
 /obj/machinery/atmospherics/components/unary/tank/carbon_dioxide
 	gas_type = GAS_CO2
 
-/obj/machinery/atmospherics/components/unary/tank/carbon_dioxide/Initialize()
+/obj/machinery/atmospherics/components/unary/tank/carbon_dioxide/Initialize(mapload)
 	. = ..()
 	var/datum/gas_mixture/air_contents = airs[1]
 	air_contents.set_moles(GAS_CO2, AIR_CONTENTS)
@@ -46,7 +46,7 @@
 	icon_state = "orange"
 	gas_type = GAS_PLASMA
 
-/obj/machinery/atmospherics/components/unary/tank/toxins/Initialize()
+/obj/machinery/atmospherics/components/unary/tank/toxins/Initialize(mapload)
 	. = ..()
 	var/datum/gas_mixture/air_contents = airs[1]
 	air_contents.set_moles(GAS_PLASMA, AIR_CONTENTS)
@@ -55,7 +55,7 @@
 	icon_state = "blue"
 	gas_type = GAS_O2
 
-/obj/machinery/atmospherics/components/unary/tank/oxygen/Initialize()
+/obj/machinery/atmospherics/components/unary/tank/oxygen/Initialize(mapload)
 	. = ..()
 	var/datum/gas_mixture/air_contents = airs[1]
 	air_contents.set_moles(GAS_O2, AIR_CONTENTS)
@@ -64,7 +64,7 @@
 	icon_state = "red"
 	gas_type = GAS_N2
 
-/obj/machinery/atmospherics/components/unary/tank/nitrogen/Initialize()
+/obj/machinery/atmospherics/components/unary/tank/nitrogen/Initialize(mapload)
 	. = ..()
 	var/datum/gas_mixture/air_contents = airs[1]
 	air_contents.set_moles(GAS_N2, AIR_CONTENTS)
