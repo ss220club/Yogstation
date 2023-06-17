@@ -578,9 +578,9 @@
 		)
 
 /datum/gas_reaction/freonfire/react(datum/gas_mixture/air, datum/holder)
-	var/turf/open/location = get_holder_turf(holder)
-	if(!location)
+	if(!isopenturf(holder))
 		return NO_REACTION
+	var/turf/open/location = holder
 	var/energy_released = 0
 	var/old_thermal_energy = air.thermal_energy()
 	var/temperature = air.return_temperature()
@@ -713,9 +713,9 @@
 		)
 
 /datum/gas_reaction/metalhydrogen/react(datum/gas_mixture/air, datum/holder)
-	var/turf/open/location = get_holder_turf(holder)
-	if(!location)
+	if(!isopenturf(holder))
 		return NO_REACTION
+	var/turf/open/location = holder
 	var/temperature = air.return_temperature()
 	var/old_thermal_energy = air.thermal_energy()
 	///the more heat you use the higher is this factor
@@ -985,10 +985,6 @@
 	)
 
 /datum/gas_reaction/pluonium_bz_response/react(datum/gas_mixture/air, datum/holder)
-	var/turf/open/location = get_holder_turf(holder)
-	if(!location)
-		return NO_REACTION
-
 	var/old_temperature = air.return_temperature()
 	var/old_thermal_energy = air.thermal_energy()
 
@@ -1004,6 +1000,8 @@
 	air.adjust_moles(GAS_PLASMA, consumed_amount * 1)
 
 	var/energy_released = consumed_amount * 2
+
+	var/turf/open/location = get_holder_turf(holder)
 	if (location)
 		radiation_pulse(location, consumed_amount * 2, 2.5, TRUE, FALSE)
 		for(var/mob/living/carbon/L in location)
@@ -1029,9 +1027,6 @@
 	)
 
 /datum/gas_reaction/pluonium_tritium_response/react(datum/gas_mixture/air, datum/holder)
-	var/turf/open/location = get_holder_turf(holder)
-	if(!location)
-		return NO_REACTION
 	var/energy_released = 0
 	var/old_thermal_energy = air.thermal_energy()
 	var/initial_pluon = air.get_moles(GAS_PLUONIUM)
@@ -1039,7 +1034,9 @@
 	var/produced_amount = min(5, initial_trit, initial_pluon)
 	if(initial_trit - produced_amount < 0 || initial_pluon - produced_amount * 0.01 < 0)
 		return NO_REACTION
-	location.rad_act(produced_amount * 2.4)
+	if(isopenturf(holder))
+		var/turf/open/location = holder
+		location.rad_act(produced_amount * 2.4)
 	air.adjust_moles(GAS_TRITIUM, -produced_amount)
 	air.adjust_moles(GAS_H2, produced_amount)
 	air.adjust_moles(GAS_PLUONIUM, -(produced_amount * 0.01))
