@@ -1,4 +1,3 @@
-/* SS220 DELETEION - JUKEBOX - MOVED TO: dance_machine.dm
 /obj/machinery/jukebox
 	name = "jukebox"
 	desc = "A classic music player."
@@ -474,4 +473,3 @@
 		for(var/mob/living/M in rangers)
 			if(prob(5+(allowed(M)*4)) && (M.mobility_flags & MOBILITY_MOVE))
 				dance(M)
-*/

@@ -37,7 +37,7 @@ SUBSYSTEM_DEF(jukeboxes)
 	//Downsides to this? This means that you can *only* hear the jukebox audio if you were present on the server when it started playing, and it means that it's now impossible to add loops to the jukebox track list.
 	var/sound/song_to_init = sound(T.song_path)
 	song_to_init.status = SOUND_MUTE
-	for(var/mob/M in GLOB.player_list)
+	for(var/mob/living/M in GLOB.player_list)
 		if(!M.client)
 			continue
 		if(!(M.client.prefs.read_preference(/datum/preference/toggle/sound_instruments)))
@@ -49,7 +49,7 @@ SUBSYSTEM_DEF(jukeboxes)
 /datum/controller/subsystem/jukeboxes/proc/removejukebox(IDtoremove)
 	if(islist(activejukeboxes[IDtoremove]))
 		var/jukechannel = activejukeboxes[IDtoremove][2]
-		for(var/mob/M in GLOB.player_list)
+		for(var/mob/living/M in GLOB.player_list)
 			if(!M.client)
 				continue
 			M.stop_sound_channel(jukechannel)
@@ -103,7 +103,7 @@ SUBSYSTEM_DEF(jukeboxes)
 
 		song_played.falloff = jukeinfo[4]
 
-		for(var/mob/M in GLOB.player_list)
+		for(var/mob/living/M in GLOB.player_list)
 			if(!M.client)
 				continue
 			if(!(M.client.prefs.read_preference(/datum/preference/toggle/sound_instruments)) || !M.can_hear())

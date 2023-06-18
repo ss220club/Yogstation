@@ -144,5 +144,41 @@
 	machine_room = machine_area ///couldn't find a proper powered area on loc or adjacent wall, defaulting back to loc and blaming mappers
 	return machine_room
 
+/obj/machinery/light/update(trigger = TRUE, instant = FALSE, play_sound = TRUE)
+	switch(status)
+		if(LIGHT_BROKEN,LIGHT_BURNED,LIGHT_EMPTY)
+			on = FALSE
+	emergency_mode = FALSE
+	if(on)
+		if(instant)
+			turn_on(trigger, play_sound)
+		else if(maploaded)
+			turn_on(trigger, play_sound)
+			maploaded = FALSE
+		else if(!turning_on)
+			turning_on = TRUE
+			addtimer(CALLBACK(src, PROC_REF(turn_on), trigger, play_sound), rand(LIGHT_ON_DELAY_LOWER, LIGHT_ON_DELAY_UPPER))
+	else if(has_emergency_power(LIGHT_EMERGENCY_POWER_USE) && !turned_off())
+		use_power = IDLE_POWER_USE
+		emergency_mode = TRUE
+		START_PROCESSING(SSmachines, src)
+	else
+		use_power = IDLE_POWER_USE
+		set_light(0)
+	update_icon()
+
+	active_power_usage = (brightness * 10)
+	if(on != on_gs)
+		on_gs = on
+		if(on)
+			static_power_used = brightness * 20 //20W per unit luminosity
+			addStaticPower(static_power_used, AREA_USAGE_STATIC_LIGHT)
+		else
+			removeStaticPower(static_power_used, AREA_USAGE_STATIC_LIGHT)
+
+	broken_sparks(start_only=TRUE)
+
 #undef NIGHTSHIFT_LIGHT_MODIFIER
 #undef NIGHTSHIFT_COLOR_MODIFIER
+#undef LIGHT_ON_DELAY_UPPER
+#undef LIGHT_ON_DELAY_LOWER

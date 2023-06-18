@@ -375,13 +375,12 @@
 	update()
 
 // update the icon_state and luminosity of the light depending on its state
-/obj/machinery/light/proc/update(trigger = TRUE, instant = FALSE, play_sound = TRUE) //SS220 EDIT
+/obj/machinery/light/proc/update(trigger = TRUE)
 	switch(status)
 		if(LIGHT_BROKEN,LIGHT_BURNED,LIGHT_EMPTY)
 			on = FALSE
 	emergency_mode = FALSE
 	if(on)
-	/* SS220 EDIT - ORIGINAL	
 		var/BR = brightness
 		var/PO = bulb_power
 		var/CO = bulb_colour
@@ -392,7 +391,7 @@
 			CO = bulb_emergency_colour
 		else if (A && A.vacuum)
 			CO = bulb_vacuum_colour
-			BR = bulb_vacuum_brightness	
+			BR = bulb_vacuum_brightness
 		else if (nightshift_enabled)
 			BR = nightshift_brightness
 			PO = nightshift_light_power
@@ -410,17 +409,6 @@
 			else
 				use_power = ACTIVE_POWER_USE
 				set_light(BR, PO, CO)
-	*/
-	//SS220 EDIT CHANGE BEGIN - ASTHETICS - LIGHTNING
-		if(instant)
-			turn_on(trigger, play_sound)
-		else if(maploaded)
-			turn_on(trigger, play_sound)
-			maploaded = FALSE
-		else if(!turning_on)
-			turning_on = TRUE
-			addtimer(CALLBACK(src, PROC_REF(turn_on), trigger, play_sound), rand(LIGHT_ON_DELAY_LOWER, LIGHT_ON_DELAY_UPPER))
-	//SS220 EDIT END
 	else if(has_emergency_power(LIGHT_EMERGENCY_POWER_USE) && !turned_off())
 		use_power = IDLE_POWER_USE
 		emergency_mode = TRUE
@@ -440,12 +428,6 @@
 			removeStaticPower(static_power_used, AREA_USAGE_STATIC_LIGHT)
 
 	broken_sparks(start_only=TRUE)
-
-
-//SS220 EDIT ADDITION BEGIN - ASTHETICS - LIGHTNING
-#undef LIGHT_ON_DELAY_UPPER
-#undef LIGHT_ON_DELAY_LOWER
-//SS220 EDIT END
 
 /obj/machinery/light/update_atom_colour()
 	..()

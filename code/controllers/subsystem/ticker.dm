@@ -116,12 +116,7 @@ SUBSYSTEM_DEF(ticker)
 	else
 		login_music = "[global.config.directory]/title_music/sounds/[pick(music)]"*/
 	login_music_data = list()
-	login_music = pick(
-	'modular_ss220/modules/music&sounds/sound/music/Human.ogg',
-	'modular_ss220/modules/music&sounds/sound/music/Traitor.ogg',
-	'modular_ss220/modules/music&sounds/sound/music/Space_Asshole.ogg',
-	'modular_ss220/modules/music&sounds/sound/music/Endless_Space.ogg',
-	'modular_ss220/modules/music&sounds/sound/music/Treacherous_Voyage.ogg') //SS220 EDIT - ORIGINAL: choose_lobby_music()
+	login_music = choose_lobby_music()
 
 	if(!login_music)
 		to_chat(world, span_boldwarning("Could not load lobby music.")) //yogs end

@@ -115,8 +115,6 @@ GLOBAL_LIST_INIT(alt_sound_overrides, list(
 	S.status = SOUND_UPDATE
 	SEND_SOUND(src, S)
 
-//SS220 EDIT - ORIGINAL 
-/*
 /client/proc/playtitlemusic(vol = 85)
 	set waitfor = FALSE
 	UNTIL(SSticker.login_music) //wait for SSticker init to set the login music
@@ -125,14 +123,6 @@ GLOBAL_LIST_INIT(alt_sound_overrides, list(
 	if(prefs && (prefs.toggles & SOUND_LOBBY))
 		tgui_panel?.play_music(SSticker.login_music_data["url"], SSticker.login_music_data)
 		to_chat(src, "<span class='notice'>Currently playing: </span>[SSticker.selected_lobby_music]")
-		*/
-//SS220 EDIT - START
-/client/proc/playtitlemusic(vol = 50)
-	if(!SSticker || !SSticker.login_music)
-		return
-	if(prefs && (prefs.toggles & SOUND_LOBBY))
-		SEND_SOUND(src, sound(SSticker.login_music, repeat = 0, wait = 0, volume = 20, channel = CHANNEL_LOBBYMUSIC))
-//SS220 EDIT - END
 
 /proc/get_rand_frequency()
 	return rand(32000, 55000) //Frequency stuff only works with 45kbps oggs.
