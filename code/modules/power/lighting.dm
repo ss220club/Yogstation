@@ -12,8 +12,6 @@
 #define BROKEN_SPARKS_MIN (30 SECONDS)
 #define BROKEN_SPARKS_MAX (90 SECONDS)
 
-#define LIGHT_ON_DELAY_UPPER (2 SECONDS)
-#define LIGHT_ON_DELAY_LOWER (0.25 SECONDS)
 
 /obj/item/wallframe/light_fixture
 	name = "light fixture frame"

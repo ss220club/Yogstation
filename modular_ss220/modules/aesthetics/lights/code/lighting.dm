@@ -1,6 +1,9 @@
 #define NIGHTSHIFT_LIGHT_MODIFIER 0.15
 #define NIGHTSHIFT_COLOR_MODIFIER 0.10
 
+#define LIGHT_ON_DELAY_UPPER (2 SECONDS)
+#define LIGHT_ON_DELAY_LOWER (0.25 SECONDS)
+
 /// When a tooltype_act proc is successful
 #define TOOL_ACT_TOOLTYPE_SUCCESS (1<<0)
 /// When [COMSIG_ATOM_TOOL_ACT] blocks the act

@@ -299,17 +299,15 @@
 
 /obj/machinery/jukebox/disco/proc/dance(var/mob/living/M) //Show your moves
 	set waitfor = FALSE
-	switch(rand(0, 9))
+	switch(rand(0,6))
 		if(0 to 1)
 			dance2(M)
 		if(2 to 3)
 			dance3(M)
 		if(4 to 6)
 			dance4(M)
-		if(7 to 9)
-			dance5(M)
 
-/obj/machinery/jukebox/disco/proc/dance2(var/mob/living/M)
+/obj/machinery/jukebox/disco/proc/dance2(mob/living/M)
 	for(var/i in 0 to 9)
 		dance_rotate(M, CALLBACK(M, TYPE_PROC_REF(/mob, dance_flip)))
 		sleep(2 SECONDS)
@@ -366,51 +364,37 @@
 	M.lying_fix()
 
 /obj/machinery/jukebox/disco/proc/dance4(var/mob/living/M)
-	var/speed = rand(1,3)
-	set waitfor = 0
-	var/time = 30
-	while(time)
-		sleep(speed)
-		for(var/i in 1 to speed)
-			M.setDir(pick(GLOB.cardinals))
-			for(var/mob/living/carbon/NS in rangers)
-				NS.set_resting(!NS.resting, TRUE, TRUE)
-		time--
-
-/obj/machinery/jukebox/disco/proc/dance5(var/mob/living/M)
-	animate(M, transform = matrix(180, MATRIX_ROTATE), time = 1, loop = 0)
+	animate(M, transform = matrix(180, MATRIX_ROTATE), time = 0.1 SECONDS, loop = 0)
 	var/matrix/initial_matrix = matrix(M.transform)
 	for (var/i in 1 to 60)
 		if (!M)
 			return
-		if(!active)
-			break
 		if (i<31)
 			initial_matrix = matrix(M.transform)
 			initial_matrix.Translate(0,1)
-			animate(M, transform = initial_matrix, time = 1, loop = 0)
+			animate(M, transform = initial_matrix, time = 0.1 SECONDS, loop = 0)
 		if (i>30)
 			initial_matrix = matrix(M.transform)
 			initial_matrix.Translate(0,-1)
-			animate(M, transform = initial_matrix, time = 1, loop = 0)
+			animate(M, transform = initial_matrix, time = 0.1 SECONDS, loop = 0)
 		M.setDir(turn(M.dir, 90))
 		switch (M.dir)
 			if (NORTH)
 				initial_matrix = matrix(M.transform)
 				initial_matrix.Translate(0,3)
-				animate(M, transform = initial_matrix, time = 1, loop = 0)
+				animate(M, transform = initial_matrix, time = 0.1 SECONDS, loop = 0)
 			if (SOUTH)
 				initial_matrix = matrix(M.transform)
 				initial_matrix.Translate(0,-3)
-				animate(M, transform = initial_matrix, time = 1, loop = 0)
+				animate(M, transform = initial_matrix, time = 0.1 SECONDS, loop = 0)
 			if (EAST)
 				initial_matrix = matrix(M.transform)
 				initial_matrix.Translate(3,0)
-				animate(M, transform = initial_matrix, time = 1, loop = 0)
+				animate(M, transform = initial_matrix, time = 0.1 SECONDS, loop = 0)
 			if (WEST)
 				initial_matrix = matrix(M.transform)
 				initial_matrix.Translate(-3,0)
-				animate(M, transform = initial_matrix, time = 1, loop = 0)
+				animate(M, transform = initial_matrix, time = 0.1 SECONDS, loop = 0)
 		sleep(0.1 SECONDS)
 	M.lying_fix()
 
@@ -432,7 +416,20 @@
 	QDEL_LIST(sparkles)
 
 /obj/machinery/jukebox/process()
-	if(active && world.time >= stop)
+	if(world.time < stop && active)
+		for(var/mob/M in range(10,src))
+			if(!M.client || !(M.client.prefs.toggles & SOUND_JUKEBOX))
+				continue
+			if(!(M in rangers))
+				rangers[M] = TRUE
+			M.set_sound_channel_volume(CHANNEL_JUKEBOX, volume) // We want volume updated without having to walk away!!
+		for(var/mob/L in rangers)
+			if(get_dist(src,L) > 10)
+				rangers -= L
+				if(!L || !L.client)
+					continue
+				L.set_sound_channel_volume(CHANNEL_JUKEBOX, 0)
+	else if(active)
 		active = FALSE
 		STOP_PROCESSING(SSobj, src)
 		dance_over()
