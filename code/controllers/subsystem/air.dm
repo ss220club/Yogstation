@@ -118,14 +118,6 @@ SUBSYSTEM_DEF(air)
 /datum/controller/subsystem/air/proc/thread_running()
 	return FALSE
 
-/proc/fix_corrupted_atmos()
-
-/client/proc/fixcorruption()
-	set category = "Misc.Server Debug"
-	set desc="Fixes air that has weird NaNs (-1.#IND and such). Hopefully."
-	set name="Fix Infinite Air"
-	fix_corrupted_atmos()
-
 /datum/controller/subsystem/air/fire(resumed = 0)
 	if(thread_running())
 		cur_thread_wait_ticks++
