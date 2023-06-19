@@ -225,6 +225,11 @@ we use a hook instead
 	//Performs temperature sharing calculations (via conduction) between two gas_mixtures assuming only 1 boundary length
 	//Returns: new temperature of the sharer
 
+//alternate way of above proc
+//datum/gas_mixture/proc/temperature_share(conduction_coefficient, solid_temperature, solid_heat_capacity)
+	//Performs temperature sharing calculations (via conduction) between a gas mixture and a solid
+	//Returns: new temperature of the solid
+
 /datum/gas_mixture/proc/compare(datum/gas_mixture/sample)
 	//Compares sample to self to see if within acceptable ranges that group processing may be enabled
 	//Returns: a string indicating what check failed, or "" if check passes

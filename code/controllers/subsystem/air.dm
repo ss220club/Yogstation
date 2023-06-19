@@ -118,15 +118,19 @@ SUBSYSTEM_DEF(air)
 /datum/controller/subsystem/air/proc/thread_running()
 	return FALSE
 
-/datum/controller/subsystem/air/fire(resumed = 0)
+
+/datum/controller/subsystem/air/proc/check_threads()
 	if(thread_running())
 		cur_thread_wait_ticks++
 		pause()
-		return
+		return FALSE
+	return TRUE
+
+/datum/controller/subsystem/air/fire(resumed = 0)
+	var/timer = TICK_USAGE_REAL
+
 	thread_wait_ticks = MC_AVERAGE(thread_wait_ticks, cur_thread_wait_ticks)
 	cur_thread_wait_ticks = 0
-
-	var/timer = TICK_USAGE_REAL
 
 	if(length(rebuild_queue) || length(expansion_queue))
 		timer = TICK_USAGE_REAL
@@ -136,7 +140,7 @@ SUBSYSTEM_DEF(air)
 		if(state != SS_RUNNING)
 			return
 
-	if(currentpart == SSAIR_ACTIVETURFS)
+	if(currentpart == SSAIR_ACTIVETURFS && check_threads())
 		timer = TICK_USAGE_REAL
 		process_turfs(resumed)
 		if(state != SS_RUNNING)
@@ -144,21 +148,21 @@ SUBSYSTEM_DEF(air)
 		resumed = 0
 		currentpart = SSAIR_EXCITEDGROUPS
 
-	if(currentpart == SSAIR_EXCITEDGROUPS)
+	if(currentpart == SSAIR_EXCITEDGROUPS && check_threads())
 		process_excited_groups(resumed)
 		if(state != SS_RUNNING)
 			return
 		resumed = 0
 		currentpart = SSAIR_EQUALIZE
 
-	if(currentpart == SSAIR_EQUALIZE)
+	if(currentpart == SSAIR_EQUALIZE && check_threads())
 		process_turf_equalize(resumed)
 		if(state != SS_RUNNING)
 			return
 		resumed = 0
 		currentpart = SSAIR_FINALIZE_TURFS
 
-	if(currentpart == SSAIR_FINALIZE_TURFS)
+	if(currentpart == SSAIR_FINALIZE_TURFS && check_threads())
 		finish_turf_processing(resumed)
 		if(state != SS_RUNNING)
 			return
@@ -178,7 +182,7 @@ SUBSYSTEM_DEF(air)
 		currentpart = SSAIR_ATMOSMACHINERY
 
 	// This is only machinery like filters, mixers that don't interact with air
-	if(currentpart == SSAIR_ATMOSMACHINERY)
+	if(currentpart == SSAIR_ATMOSMACHINERY && check_threads())
 		timer = TICK_USAGE_REAL
 		if(!resumed)
 			cached_cost = 0
@@ -202,7 +206,7 @@ SUBSYSTEM_DEF(air)
 		resumed = 0
 		currentpart = SSAIR_HOTSPOTS
 
-	if(currentpart == SSAIR_HOTSPOTS)
+	if(currentpart == SSAIR_HOTSPOTS && check_threads())
 		timer = TICK_USAGE_REAL
 		if(!resumed)
 			cached_cost = 0
@@ -215,7 +219,7 @@ SUBSYSTEM_DEF(air)
 		currentpart = heat_enabled ? SSAIR_TURF_CONDUCTION : SSAIR_ACTIVETURFS
 
 	// Heat -- slow and of questionable usefulness. Off by default for this reason. Pretty cool, though.
-	if(currentpart == SSAIR_TURF_CONDUCTION)
+	if(currentpart == SSAIR_TURF_CONDUCTION && check_threads())
 		timer = TICK_USAGE_REAL
 		if(process_turf_heat(MC_TICK_REMAINING_MS))
 			pause()
