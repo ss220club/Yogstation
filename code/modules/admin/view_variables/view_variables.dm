@@ -1,5 +1,5 @@
 /client/proc/debug_variables(datum/D in world)
-	set category = "Misc.Server Debug"
+	set category = "Debug" // SS220 EDIT
 	set name = "View Variables"
 	//set src in world
 	var/static/cookieoffset = rand(1, 9999) //to force cookies to reset after the round.

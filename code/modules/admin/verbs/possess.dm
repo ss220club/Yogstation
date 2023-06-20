@@ -51,7 +51,7 @@
 
 /proc/givetestverbs(mob/M in GLOB.mob_list)
 	set desc = "Give this guy possess/release verbs"
-	set category = "Misc.Server Debug"
+	set category = "Debug" // SS220 EDIT
 	set name = "Give Possessing Verbs"
 	add_verb(M, /proc/possess)
 	add_verb(M, /proc/release)

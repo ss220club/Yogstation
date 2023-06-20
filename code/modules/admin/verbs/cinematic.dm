@@ -1,6 +1,6 @@
 /client/proc/cinematic()
 	set name = "Cinematic"
-	set category = "Misc.Unused"
+	set category = "Debug" // SS220 EDIT
 	set desc = "Shows a cinematic."	// Intended for testing but I thought it might be nice for events on the rare occasion Feel free to comment it out if it's not wanted.
 	set hidden = TRUE
 	if(!SSticker)

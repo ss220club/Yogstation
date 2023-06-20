@@ -144,7 +144,7 @@
 
 /client/proc/debugNatureMapGenerator()
 	set name = "Test Nature Map Generator"
-	set category = "Misc.Server Debug"
+	set category = "Debug" // SS220 EDIT
 
 	var/datum/mapGenerator/nature/N = new()
 	var/startInput = input(usr,"Start turf of Map, (X;Y;Z)", "Map Gen Settings", "1;1;1") as text

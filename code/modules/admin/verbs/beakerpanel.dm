@@ -61,7 +61,7 @@
 	return container
 
 /datum/admins/proc/beaker_panel()
-	set category = "Misc.Unused"
+	set category = "Debug" // SS220 EDIT
 	set name = "Spawn reagent container"
 	if(!check_rights())
 		return

@@ -31,7 +31,7 @@
 
 
 /datum/keybinding/client/communication/donor_say
-	hotkey_keys = list("F9")
+	hotkey_keys = list("ShiftF9") // SS220 EDIT
 	name = DONORSAY_CHANNEL
 	full_name = "Donator Say"
 	description = ""

@@ -82,7 +82,7 @@
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Headset Message") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_mod_antag_rep(client/C in GLOB.clients, operation)
-	set category = "Misc.Unused"
+	set category = "Debug" // SS220 EDIT
 	set name = "Modify Antagonist Reputation"
 
 	if(!check_rights(R_ADMIN))
@@ -659,7 +659,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	log_admin("[key_name(src)] has changed the Central Command name to: [input]")
 
 /client/proc/cmd_admin_delete(atom/A as obj|mob|turf in world)
-	set category = "Misc.Unused"
+	set category = "Debug" // SS220 EDIT
 	set name = "Delete"
 
 	if(!check_rights(R_ADMIN)) //yogs - makes this +admin instead of +spawn/+debug
@@ -800,7 +800,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		mob.gib(1, 1, 1)
 
 /client/proc/cmd_admin_check_contents(mob/living/M in GLOB.mob_list)
-	set category = "Misc.Unused"
+	set category = "Debug" // SS220 EDIT
 	set name = "Check Contents"
 
 	var/list/L = M.get_contents()
@@ -809,7 +809,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Check Contents") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/toggle_view_range()
-	set category = "Misc.Unused"
+	set category = "Debug" // SS220 EDIT
 	set name = "Change View Range"
 	set desc = "switches between 1x and custom views"
 
@@ -1133,7 +1133,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Show Tip")
 
 /client/proc/modify_goals()
-	set category = "Misc.Server Debug"
+	set category = "Debug" // SS220 EDIT
 	set name = "Modify goals"
 
 	if(!check_rights(R_ADMIN))
@@ -1483,7 +1483,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		pie.throw_at(user, 10, 0.5, usr)
 
 /client/proc/admincryo(mob/living/carbon/human/target as mob)
-	set category = "Misc.Unused"
+	set category = "Debug" // SS220 EDIT
 	set name = "Admin Cryo"
 	if(!check_rights(R_ADMIN))
 		return

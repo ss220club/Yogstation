@@ -1,6 +1,6 @@
 /proc/machine_upgrade(obj/machinery/M in world)
 	set name = "Tweak Component Ratings"
-	set category = "Misc.Server Debug"
+	set category = "Debug" // SS220 EDIT
 	if (!istype(M))
 		return
 
