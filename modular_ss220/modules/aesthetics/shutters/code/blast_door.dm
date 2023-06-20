@@ -1,5 +1,6 @@
 /obj/machinery/door/poddoor
 	icon = 'modular_ss220/modules/aesthetics/shutters/icons/blast_door.dmi'
+	icon_state = "open"
 	var/blast_door_sound = 'modular_ss220/modules/aesthetics/shutters/sound/blast_door.ogg'
 
 /obj/machinery/door/poddoor/do_animate(animation)

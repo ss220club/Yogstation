@@ -850,6 +850,7 @@
 #include "code\game\machinery\cloning.dm"
 #include "code\game\machinery\constructable_frame.dm"
 #include "code\game\machinery\cryopod.dm"
+// #include "code\game\machinery\dance_machine.dm" //SS220 REPLACEMENT - modular_ss220\modules\jukebox
 #include "code\game\machinery\decontamination.dm"
 #include "code\game\machinery\defibrillator_mount.dm"
 #include "code\game\machinery\deployable.dm"
