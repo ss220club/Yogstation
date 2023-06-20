@@ -107,7 +107,7 @@ GLOBAL_LIST_EMPTY(ooc_new_long_messages_very)
 			to_chat(src, span_warning("Please wait a [(GLOB.ooc_new_last_messsage[key] - world.time) / 10 ] seconds before sending another OOC message"))
 			return
 
-	if(get_exp_living(TRUE) <= 300)
+	if(get_exp_living(TRUE) <= 300 && !isnull(holder)) // SS220 EDIT
 		GLOB.ooc_new_last_messsage[key] = world.time + 5 SECONDS
 
 	mob.log_talk(raw_msg, LOG_OOC)
