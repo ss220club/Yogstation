@@ -1,5 +1,5 @@
 /client/verb/dsay(msg as text)
-	set category = "Misc.Unused"
+	set category = "Debug" // SS220 EDIT
 	set name = "Dsay"
 	set hidden = TRUE
 

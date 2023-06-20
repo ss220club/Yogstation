@@ -70,7 +70,7 @@
 
 /client/proc/run_dynamic_simulations()
 	set name = "Run Dynamic Simulations"
-	set category = "Misc.Server Debug"
+	set category = "Debug" // SS220 EDIT
 
 	var/simulations = input(usr, "Enter number of simulations") as num
 	var/roundstart_players = input(usr, "Enter number of round start players") as num
@@ -121,7 +121,7 @@
 
 /client/proc/export_dynamic_json()
 	set name = "Export dynamic.json"
-	set category = "Misc.Server Debug"
+	set category = "Debug" // SS220 EDIT
 
 	var/datum/game_mode/dynamic/dynamic = SSticker.mode
 

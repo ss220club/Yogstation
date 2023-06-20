@@ -164,7 +164,7 @@
   * Some kind of debug verb that gives atmosphere environment details
   */
 /mob/proc/Cell()
-	set category = "Misc.Server Debug"
+	set category = "Debug" // SS220 EDIT
 	set hidden = 1
 
 	if(!loc)

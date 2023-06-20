@@ -1,6 +1,6 @@
 /client/proc/fix_air(turf/open/T in world)
 	set name = "Fix Air"
-	set category = "Misc.Unused"
+	set category = "Debug" // SS220 EDIT
 	set desc = "Fixes air in specified radius."
 
 	if(!holder)
@@ -21,7 +21,7 @@
 
 /client/proc/fix_air_z()
 	set name = "Fix Air on current Z-level"
-	set category = "Misc.Unused"
+	set category = "Debug" // SS220 EDIT
 	set desc = "Fixes air on the entire z-level, temporarily disables atmos"
 
 	if(!holder)

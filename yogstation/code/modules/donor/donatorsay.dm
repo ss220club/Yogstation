@@ -1,5 +1,5 @@
 /client/proc/cmd_donator_say(msg as text)
-	set category = "Donator"
+	set category = "OOC" // SS220 EDIT
 	set name = "Donator Chat"
 
 	if(!is_donator(usr))

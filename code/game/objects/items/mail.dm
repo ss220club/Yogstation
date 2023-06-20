@@ -331,7 +331,7 @@
 
 /client/proc/debug_mail_loot()
 	set name = "Debug Mail Loot"
-	set category = "Misc.Server Debug"
+	set category = "Debug" // SS220 EDIT
 
 	var/obj/item/mail/mail = new
 	var/list/generic_goodies = mail.generic_goodies

@@ -1,5 +1,5 @@
 /client/proc/air_status(turf/target)
-	set category = "Misc.Server Debug"
+	set category = "Debug" // SS220 EDIT
 	set name = "Display Air Status"
 
 	if(!isturf(target))
@@ -8,7 +8,7 @@
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Show Air Status") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/fix_next_move()
-	set category = "Misc.Server Debug"
+	set category = "Debug" // SS220 EDIT
 	set name = "Unfreeze Everyone"
 	var/largest_move_time = 0
 	var/largest_click_time = 0
@@ -39,7 +39,7 @@
 	return
 
 /client/proc/radio_report()
-	set category = "Misc.Server Debug"
+	set category = "Debug" // SS220 EDIT
 	set name = "Radio report"
 
 	var/output = "<HTML><HEAD><meta charset='UTF-8'></HEAD><BODY><b>Radio Report</b><hr>"

@@ -1,5 +1,5 @@
 /client/proc/atmosscan()
-	set category = "Misc.Server Debug"
+	set category = "Debug" // SS220 EDIT
 	set name = "Check Plumbing"
 	if(!src.holder)
 		to_chat(src, "Only administrators may use this command.", confidential=TRUE)
@@ -22,7 +22,7 @@
 			to_chat(usr, "Unconnected [pipe.name] located at [ADMIN_VERBOSEJMP(pipe)]", confidential=TRUE)
 
 /client/proc/powerdebug()
-	set category = "Misc.Server Debug"
+	set category = "Debug" // SS220 EDIT
 	set name = "Check Power"
 	if(!src.holder)
 		to_chat(src, "Only administrators may use this command.", confidential=TRUE)
