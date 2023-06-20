@@ -101,8 +101,6 @@
 	///This datum, if set, allows terrain generation behavior to be ran on Initialize(mapload)
 	var/datum/map_generator/map_generator
 	
-	var/turf/teleport_anchors = list()	//ist of tiles we prefer to teleport to. this is for areas that are partially hazardous like for instance atmos_distro
-
 /**
   * A list of teleport locations
   *
