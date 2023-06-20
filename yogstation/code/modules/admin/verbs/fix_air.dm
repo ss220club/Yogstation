@@ -54,7 +54,7 @@
 
 /client/proc/clear_all_pipenets()
 	set name = "Empties all gases from pipenets"
-	set category = "Misc.Unused"
+	set category = "Debug" // SS220 EDIT
 	set desc = "Empties all gases from pipenets, temporarily disables atmos"
 
 	if(!holder)
