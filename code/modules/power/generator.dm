@@ -21,14 +21,16 @@
 	. = ..()
 	find_circs()
 	connect_to_network()
-	SSair.atmos_machinery += src
+	SSair.start_processing_machine(src)
+	START_PROCESSING(SSmachines, src)
 	update_icon()
 	component_parts = list(new /obj/item/circuitboard/machine/generator)
 	AddComponent(/datum/component/simple_rotation,ROTATION_ALTCLICK | ROTATION_CLOCKWISE | ROTATION_COUNTERCLOCKWISE | ROTATION_VERBS )
 
 /obj/machinery/power/generator/Destroy()
 	kill_circs()
-	SSair.atmos_machinery -= src
+	SSair.stop_processing_machine(src)
+	STOP_PROCESSING(SSmachines, src)
 	return ..()
 
 /obj/machinery/power/generator/update_icon()
@@ -106,9 +108,6 @@
 			var/datum/gas_mixture/cold_circ_air1 = cold_circ.airs[1]
 			cold_circ_air1.merge(cold_air)
 
-	update_icon()
-
-	src.updateDialog()
 
 /obj/machinery/power/generator/process()
 	//Setting this number higher just makes the change in power output slower, it doesnt actualy reduce power output cause **math**
@@ -117,7 +116,8 @@
 	lastgenlev = power_output
 	lastgen -= power_output
 	lastgen = max(lastgen, 0)
-	..()
+	update_icon()
+	src.updateDialog()
 
 /obj/machinery/power/generator/proc/get_menu(include_link = TRUE)
 	var/t = ""
