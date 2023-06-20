@@ -12,6 +12,7 @@
 #define BROKEN_SPARKS_MIN (30 SECONDS)
 #define BROKEN_SPARKS_MAX (90 SECONDS)
 
+
 /obj/item/wallframe/light_fixture
 	name = "light fixture frame"
 	desc = "Used for building lights."
@@ -354,7 +355,7 @@
 			else
 				icon_state = "[base_state]"
 				if(on && !forced_off)
-					var/mutable_appearance/glowybit = mutable_appearance(overlayicon, base_state, layer, EMISSIVE_PLANE)
+					var/mutable_appearance/glowybit = mutable_appearance(overlayicon, base_state, ABOVE_LIGHTING_LAYER, ABOVE_LIGHTING_PLANE) //SS220 EDIT
 					glowybit.alpha = clamp(light_power*250, 30, 200)
 					add_overlay(glowybit)
 		if(LIGHT_EMPTY)
@@ -477,6 +478,10 @@
 			. += "The [fitting] has been smashed."
 	if(cell)
 		. += "Its backup power charge meter reads [round((cell.charge / cell.maxcharge) * 100, 0.1)]%."
+	//SS220 EDIT ADDITION
+	if(constant_flickering)
+		. += span_danger("The lighting ballast appears to be damaged, this could be fixed with a multitool.")
+	//SS220 EDIT END
 
 
 
@@ -620,7 +625,12 @@
 // true if area has power and lightswitch is on
 /obj/machinery/light/proc/has_power()
 	var/area/A = get_area(src)
+	//SS220 EDIT ADDITION BEGIN
+	if(isnull(A))
+		return FALSE
+	//SS220 EDIT END
 	return A.lightswitch && A.power_light
+	
 
 // returns whether this light has emergency power
 // can also return if it has access to a certain amount of that power
@@ -653,10 +663,10 @@
 			if(status != LIGHT_OK)
 				break
 			on = !on
-			update(0)
+			update(FALSE, TRUE) //SS220 EDIT CHANGE
 			sleep(rand(0.5, 1.5) SECONDS)
 		on = (status == LIGHT_OK) && !forced_off
-		update(0)
+		update(FALSE, TRUE) // SS220 EDIT CHANGE
 	flickering = 0
 
 // ai attack - make lights flicker, because why not

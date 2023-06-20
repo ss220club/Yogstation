@@ -687,4 +687,4 @@ Class Procs:
 	if(can_be_occupant(caller))
 		return TRUE
 
-	
+

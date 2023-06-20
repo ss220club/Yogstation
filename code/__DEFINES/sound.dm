@@ -11,11 +11,12 @@
 #define CHANNEL_VOICE_ANNOUNCE 1015
 #define CHANNEL_MEGAFAUNA 1014 // battle music
 #define CHANNEL_CHARGED_SPELL 1013
+#define CHANNEL_JUKEBOX_START 1011 //SS220 ADDITION
 
 //THIS SHOULD ALWAYS BE THE LOWEST ONE!
 //KEEP IT UPDATED
 
-#define CHANNEL_HIGHEST_AVAILABLE 1011 // SS220 EDIT
+#define CHANNEL_HIGHEST_AVAILABLE 1010 // SS220 EDIT
 
 #define MAX_INSTRUMENT_CHANNELS (128 * 6)
 
@@ -58,7 +59,7 @@
 #define SPOOKY list('sound/ambience/ambimo1.ogg','sound/ambience/ambimo2.ogg','sound/ambience/ambiruin7.ogg','sound/ambience/ambiruin6.ogg',\
 										'sound/ambience/ambiodd.ogg', 'sound/ambience/ambimystery.ogg')
 
-#define SPACE list('sound/ambience/ambispace.ogg', 'sound/ambience/ambispace2.ogg', 'sound/ambience/title2.ogg', 'sound/ambience/ambiatmos.ogg')
+#define SPACE list('sound/ambience/ambispace.ogg', 'sound/ambience/ambispace2.ogg', 'modular_ss220/modules/music&sounds/sound/ambience/ambispace3.ogg', 'modular_ss220/modules/music&sounds/sound/ambience/ambispace4.ogg') //SS220 EDIT
 
 #define MAINTENANCE list('sound/ambience/ambimaint1.ogg', 'sound/ambience/ambimaint2.ogg', 'sound/ambience/ambimaint3.ogg', 'sound/ambience/ambimaint4.ogg',\
 											'sound/ambience/ambimaint5.ogg', 'sound/voice/lowHiss2.ogg', 'sound/voice/lowHiss3.ogg', 'sound/voice/lowHiss4.ogg', 'sound/ambience/ambitech2.ogg' )
